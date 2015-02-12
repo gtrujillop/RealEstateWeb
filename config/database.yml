@@ -39,8 +39,8 @@ test:
   reconnect: false
   database: rapp_test
   pool: 5
-  username: jack
-  password: jill
+  username: root
+  password:
   host: localhost
   port: 3306
 
