@@ -1,5 +1,19 @@
 require 'rails_helper'
 
-RSpec.describe Property, type: :model do
-  pending "add some examples to (or delete) #{__FILE__}"
+describe Property do
+  
+  describe "presence validations" do
+
+		it { should validate_presence_of(:area) }
+		it { should validate_presence_of(:floors_number) }
+		it { should validate_presence_of(:address) }
+	
+	end
+
+	describe "number validations" do
+		it { should validate_numericality_of(:area) }
+		it { should validate_numericality_of(:floors_number), :only_integer }
+	end
+	
+
 end
