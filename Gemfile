@@ -37,6 +37,8 @@ group :test do
 end
 
 group :development, :test do
+  #date validator gem
+	gem 'date_validator'
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug'
 

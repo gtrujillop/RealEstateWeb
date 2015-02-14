@@ -59,6 +59,8 @@ GEM
       gherkin (~> 2.12)
       multi_json (>= 1.7.5, < 2.0)
       multi_test (>= 0.1.1)
+    date_validator (0.7.1)
+      activemodel
     debug_inspector (0.0.2)
     debugger-linecache (1.2.0)
     diff-lcs (1.2.5)
@@ -188,6 +190,7 @@ DEPENDENCIES
   byebug
   coffee-rails (~> 4.1.0)
   cucumber
+  date_validator
   jbuilder (~> 2.0)
   jquery-rails
   mysql2
