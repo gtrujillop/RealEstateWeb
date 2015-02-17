@@ -54,5 +54,9 @@ describe User do
     										password_confirmation: 'password_1'}).save).to be false
 		end
 	end
+
+	describe "relation with property model" do
+		it { should have_many(:property) }
+	end
   
 end
