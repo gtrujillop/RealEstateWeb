@@ -14,6 +14,10 @@ describe Property do
 		it { should validate_numericality_of(:area) }
 		it { should validate_numericality_of(:floors_number), :only_integer }
 	end
+
+	describe "relation with user model" do
+		it { should belong_to(:user) }
+	end
 	
 
 end
