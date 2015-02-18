@@ -22,5 +22,9 @@ describe Neighbor do
 		it { should have_many(:property) }
 	end
 
+	describe "relation with zone model" do
+		it { should belong_to(:zone) }
+	end
+
 
 end
