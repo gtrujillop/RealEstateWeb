@@ -18,5 +18,9 @@ describe Neighbor do
 		it { should validate_length_of(:name).is_at_most(140) }
 	end
 
+	describe "relation with property model" do
+		it { should have_many(:property) }
+	end
+
 
 end
