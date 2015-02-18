@@ -7,6 +7,8 @@ describe Property do
 		it { should validate_presence_of(:area) }
 		it { should validate_presence_of(:floors_number) }
 		it { should validate_presence_of(:address) }
+  	it { should validate_presence_of(:is_active) }
+
 	
 	end
 
