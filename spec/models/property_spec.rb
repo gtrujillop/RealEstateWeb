@@ -18,6 +18,10 @@ describe Property do
 	describe "relation with user model" do
 		it { should belong_to(:user) }
 	end
+
+	describe "relation with neighbor model" do
+		it { should belong_to(:neighbor) }
+	end
 	
 
 end
