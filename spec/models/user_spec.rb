@@ -4,21 +4,21 @@ describe User do
 
 	describe "password validations" do
 		it "fails because no password" do
-    	expect(User.new({ username: "user_1", first_name: "Juan", last_name: "Perez", email:'my_email@email.com' }).save).to be false
+    	expect(User.new({ username: "user_1",birth_date: '11-09-1988', first_name: "Juan", last_name: "Perez", email:'my_email@email.com', is_active: true }).save).to be false
   	end
 
   	it "fails because password is short" do
-    	expect(User.new({username: "user_1", first_name: "Juan", last_name: "Perez", password: 'blah', email:'my_email@email.com'}).save).to be false
+    	expect(User.new({username: "user_1",birth_date: '11-09-1988', first_name: "Juan", last_name: "Perez", password: 'blah', email:'my_email@email.com', is_active: true}).save).to be false
   	end
 
   	it "fails because password confirmation does not match" do
-    	expect(User.new({username: "user_1", first_name: "Juan", last_name: 
-    						"Perez", password: 'password_1', password_confirmation: 'password_2', email:'my_email@email.com'}).save).to be false
+    	expect(User.new({username: "user_1", first_name: "Juan",birth_date: '11-09-1988', last_name: 
+    						"Perez", password: 'password_1', password_confirmation: 'password_2', email:'my_email@email.com', is_active: true}).save).to be false
   	end
 
   	it "saves because password is valid" do
-    	expect(User.new({username: "user_1", first_name: "Juan", last_name: 
-    						"Perez", password: 'password_1', password_confirmation: 'password_1', email:'my_email@email.com'}).save).to be false
+    	expect(User.new({username: "user_1",birth_date: '11-09-1988', first_name: "Juan", last_name: 
+    						"Perez", password: 'password_1', password_confirmation: 'password_1', email:'my_email@email.com', is_active: true}).save).to be true
   	end
 	end
 
@@ -29,6 +29,8 @@ describe User do
 		it { should validate_presence_of(:last_name) }
 		it { should validate_presence_of(:email) }
 		it { should validate_presence_of(:password) }
+  	it { should validate_presence_of(:is_active).on(:create) }
+
 
 	end
 
@@ -51,7 +53,15 @@ describe User do
     										last_name: "Perez", birth_date: 'blah', 
     										email:'my_email@email.com', 
     										password: 'password_1', 
-    										password_confirmation: 'password_1'}).save).to be false
+    										password_confirmation: 'password_1', is_active: true}).save).to be false
+		end
+
+		it 'allows save users with valid dates' do
+    	expect(User.new({ username: "user_1", first_name: "Juan", 
+    										last_name: "Perez", birth_date: '11-09-1988', 
+    										email:'my_email@email.com', 
+    										password: 'password_1', 
+    										password_confirmation: 'password_1', is_active: true}).save).to be true
 		end
 	end
 
