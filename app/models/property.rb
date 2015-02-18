@@ -7,6 +7,6 @@ class Property < ActiveRecord::Base
 	validates :address, presence: true
 	validates :is_active, presence: true
 
-	belongs_to :user
+	belongs_to :lease_holder
 	belongs_to :neighbor
 end

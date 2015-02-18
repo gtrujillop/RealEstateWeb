@@ -18,7 +18,7 @@ describe Property do
 	end
 
 	describe "relation with user model" do
-		it { should belong_to(:user) }
+		it { should belong_to(:lease_holder) }
 	end
 
 	describe "relation with neighbor model" do
