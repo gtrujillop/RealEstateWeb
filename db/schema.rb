@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150218015131) do
+ActiveRecord::Schema.define(version: 20150218021049) do
 
   create_table "cities", force: :cascade do |t|
     t.string   "name",              limit: 255
@@ -69,6 +69,7 @@ ActiveRecord::Schema.define(version: 20150218015131) do
     t.datetime "updated_at",                  null: false
     t.string   "password_digest", limit: 255
     t.boolean  "is_active",       limit: 1
+    t.string   "type",            limit: 255
   end
 
   create_table "zones", force: :cascade do |t|
