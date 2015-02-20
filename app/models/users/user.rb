@@ -9,4 +9,8 @@ class User < ActiveRecord::Base
 	validates_format_of :email, with: /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\Z/i, on: :create
 	validates :is_active, presence: true
 
+	has_many :user_roles
+	has_many :roles, through: :user_roles
+
+
 end

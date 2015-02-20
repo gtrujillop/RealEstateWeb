@@ -65,5 +65,8 @@ describe User do
 		end
 	end
 
+	describe "relation with role" do
+		it { should have_many(:roles).through(:user_roles) }
+	end
   
 end

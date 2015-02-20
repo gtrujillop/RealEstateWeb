@@ -1,3 +1,3 @@
 class LeaseHolder < User
-	has_many :property
+	has_many :properties
 end

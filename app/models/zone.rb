@@ -1,5 +1,5 @@
 class Zone < ActiveRecord::Base
 	validates :name, presence: true
 
-	has_many :neighbor
+	has_many :neighbors
 end

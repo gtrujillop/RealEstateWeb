@@ -65,7 +65,7 @@ describe LeaseHolder do
 	end
 
 	describe "relation with property model" do
-		it { should have_many(:property) }
+		it { should have_many(:properties) }
 	end
 
 end
