@@ -25,6 +25,9 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 
 # Use ActiveModel has_secure_password
 gem 'bcrypt', '~> 3.1.7'
+# Use Bootstrap from Twitter as initial Styler
+gem 'bootstrap-sass',       '3.2.0.0'
+gem 'bootstrap-datepicker-rails'
 
 # Use Unicorn as the app server
 # gem 'unicorn'
@@ -49,9 +52,15 @@ group :development, :test do
   gem 'spring'
 
   gem 'rspec-rails', '~> 3.0'
+  gem 'capybara', '~> 2.4.4'
 end
 
 group :cucumber do
   gem 'cucumber'
+end
+
+group :production do
+  gem 'pg',             '0.17.1'
+  gem 'rails_12factor', '0.0.2'
 end
 
