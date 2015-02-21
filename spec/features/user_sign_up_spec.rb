@@ -10,7 +10,7 @@ describe "the signin process", :type => :feature do
     expect(page).to have_content('Regístrese')
 
     click_link('Regístrese !')
-    expect(page).to have_content('Formularo de Registro de Usuario')
+    expect(page).to have_content('Formulario de Registro')
 
   end
 
