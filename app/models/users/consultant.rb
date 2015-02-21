@@ -1,0 +1,3 @@
+class Consultant < User
+
+end

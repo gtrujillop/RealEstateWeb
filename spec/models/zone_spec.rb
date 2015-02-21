@@ -1,5 +1,11 @@
 require 'rails_helper'
 
-RSpec.describe Zone, type: :model do
-  pending "add some examples to (or delete) #{__FILE__}"
+describe Zone do
+  
+  it { should validate_presence_of(:name) }
+  
+  describe "relation with property model" do
+		it { should have_many(:neighbors) }
+	end
+
 end
