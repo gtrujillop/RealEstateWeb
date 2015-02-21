@@ -1,14 +1,17 @@
 require 'rails_helper'
 
 describe "the signin process", :type => :feature do
-  scenario 'with valid email and password' do
-    params = { username: 'some_user', firstname: 'Some', lastname: 'User',
-               birthdate: '09-11-1988', email: 'some_email@mail.com', phone: '6665773'
-               password: '12345', password_confirmation: '12345' }
+  let(:params) { { username: 'some_user', firstname: 'Some', lastname: 'User',
+               birthdate: '09-11-1988', email: 'some_email@mail.com', phone: '6665773',
+               password: '12345', password_confirmation: '12345' } }
 
-    sign_up_with(params)
+  scenario 'Shows the registration page' do
+    visit root_path
+    expect(page).to have_content('Regístrese')
 
-    expect(page).to have_content('Sign out')
+    click_link('Regístrese !')
+    expect(page).to have_content('Formularo de Registro de Usuario')
+
   end
 
   scenario 'with invalid email' do
