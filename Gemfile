@@ -27,7 +27,8 @@ gem 'bcrypt', '~> 3.1.7'
 # Use Bootstrap from Twitter as initial Styler
 gem 'bootstrap-sass',       '3.2.0.0'
 gem 'bootstrap-datepicker-rails'
-
+#date validator gem
+gem 'date_validator'
 # Use Unicorn as the app server
 # gem 'unicorn'
 
@@ -39,8 +40,6 @@ group :test do
 end
 
 group :development, :test do
-  #date validator gem
-	gem 'date_validator'
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug'
   # Use mysql2 as the database for Active Record
