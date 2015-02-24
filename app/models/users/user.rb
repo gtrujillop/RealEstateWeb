@@ -1,7 +1,7 @@
 class User < ActiveRecord::Base
 	
 	validates_presence_of :username, :first_name, :last_name
-	validates :username, presence: true, length: { maximum: 8 }
+	validates :username, presence: true, length: { maximum: 12 }
 	has_secure_password
 	validates :password, presence: true, length: { minimum: 5 }, on: :create
 	validates :birth_date, date: true

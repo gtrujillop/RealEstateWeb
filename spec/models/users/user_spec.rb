@@ -40,7 +40,7 @@ describe User do
 				on(:create)	
 		end
 
-		it { should validate_length_of(:username).is_at_most(8) }
+		it { should validate_length_of(:username).is_at_most(12) }
 
 
 	end
