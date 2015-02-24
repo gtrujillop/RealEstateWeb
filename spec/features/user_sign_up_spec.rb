@@ -14,30 +14,27 @@ describe "the signin process", :type => :feature do
 
   end
 
-  scenario 'Shows the registration page' do
-    visit root_path
-    expect(page).to have_content('Regístrese')
-
-    click_link('Regístrese !')
+  scenario 'Saves a registered user' do
+    visit new_user_path
     expect(page).to have_content('Formulario de Registro')
+    fill_in 'user_username', with: 'new_user'
+    fill_in 'user_dni_number', with: 1234
+    fill_in 'user_first_name', with: 'New'
+    fill_in 'user_last_name', with: 'User'
+    fill_in 'user_birth_date', with: '11-09-1988'
+    fill_in 'user_email', with: 'newuser@mail.com'
+    fill_in 'user_phone', with: '6665773'
+    fill_in 'user_password', with: 'blahpassword'
+    fill_in 'user_password_confirmation', with: 'blahpassword'
 
-  end
-
-  scenario 'with invalid email' do
-    sign_up_with 'invalid_email', 'password'
-
-    expect(page).to have_content('Sign in')
-  end
-
-  scenario 'with blank password' do
-    sign_up_with 'valid@example.com', ''
-
-    expect(page).to have_content('Sign in')
+    click_button('Crear mi cuenta')
+    expect(User.all.count).to eq(1)
+    expect(User.first.username).to eq('new_user') 
   end
 
   def sign_up_with(params)
-    visit sign_up_path
-    fill_in 'Username', with: params[:username]
+    visit new_user_path
+    
     fill_in 'Firstname', with: params[:firstname]
     fill_in 'Lastname', with: params[:lastname]
     fill_in 'Birth Date', with: params[:birthdate]
