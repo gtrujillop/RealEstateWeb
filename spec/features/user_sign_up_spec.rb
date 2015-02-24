@@ -14,6 +14,15 @@ describe "the signin process", :type => :feature do
 
   end
 
+  scenario 'Shows the registration page' do
+    visit root_path
+    expect(page).to have_content('Regístrese')
+
+    click_link('Regístrese !')
+    expect(page).to have_content('Formulario de Registro')
+
+  end
+
   scenario 'with invalid email' do
     sign_up_with 'invalid_email', 'password'
 
