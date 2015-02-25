@@ -28,8 +28,6 @@ describe LeaseHolder do
 		it { should validate_presence_of(:last_name) }
 		it { should validate_presence_of(:email) }
 		it { should validate_presence_of(:password) }
-  	it { should validate_presence_of(:is_active).on(:create) }
-
 
 	end
 
@@ -41,7 +39,7 @@ describe LeaseHolder do
 				on(:create)	
 		end
 
-		it { should validate_length_of(:username).is_at_most(8) }
+		it { should validate_length_of(:username).is_at_most(12) }
 
 
 	end
