@@ -3,9 +3,14 @@
     <%= link_to "Real State Web", '#', id: "logo" %>
     <nav>
       <ul class="nav navbar-nav navbar-right">
-        <li><%= link_to "Home",   '#' %></li>
+        <li><%= link_to "Home",   root_path %></li>
         <li><%= link_to "Help",   '#' %></li>
-        <li><%= link_to "Log in", '#' %></li>
+        <% if current_user %>
+          <li>Logged in as <%= link_to "#{current_user.email}", user_path(current_user.id) %></li>
+        <%else%>
+          <li><%= link_to "iniciar sesión", :login %></li>
+        <%end%>
+        <li><%= link_to "salir", :logout, method: :post %></li>
       </ul>
     </nav>
   </div>

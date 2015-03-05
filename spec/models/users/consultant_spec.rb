@@ -28,8 +28,6 @@ describe Consultant do
 		it { should validate_presence_of(:last_name) }
 		it { should validate_presence_of(:email) }
 		it { should validate_presence_of(:password) }
-  	it { should validate_presence_of(:is_active).on(:create) }
-
 
 	end
 
@@ -41,7 +39,7 @@ describe Consultant do
 				on(:create)	
 		end
 
-		it { should validate_length_of(:username).is_at_most(8) }
+		it { should validate_length_of(:username).is_at_most(12) }
 
 
 	end
@@ -61,6 +59,18 @@ describe Consultant do
     										email:'my_email@email.com', 
     										password: 'password_1', 
     										password_confirmation: 'password_1', is_active: true}).save).to be true
+		end
+	end
+
+	describe 'after validations' do
+		it 'sets is_active value before saving the user' do
+			user = Consultant.new({ username: "user_1", first_name: "Juan", 
+    										last_name: "Perez", birth_date: '11-09-1988', 
+    										email:'my_email@email.com', 
+    										password: 'password_1', 
+    										password_confirmation: 'password_1'})
+			user.save
+			expect(Consultant.last.is_active).to be_truthy
 		end
 	end
 
