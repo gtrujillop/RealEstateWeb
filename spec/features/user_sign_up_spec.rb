@@ -48,4 +48,21 @@ describe "the signin process", :type => :feature do
     expect(page).to have_content('my_email@email.com')
 
   end
+
+  scenario 'Login as a un-registered user' do
+    params = { username: "user_1", first_name: "Juan", 
+                        last_name: "Perez", birth_date: '11-09-1988', 
+                        email:'my_email@email.com', 
+                        password: 'password_1', 
+                        password_confirmation: 'password_1'}
+    visit root_path
+    expect(page).to have_content('iniciar sesión')
+    click_link('iniciar sesión')
+    expect(page).to have_content('Login')
+    fill_in 'Email', with: params[:email]
+    fill_in 'Password', with: params[:password]
+    click_button 'Login'
+    expect(page).to have_content('Email o password erróneos.')
+
+  end
 end
