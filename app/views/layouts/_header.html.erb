@@ -10,7 +10,9 @@
         <%else%>
           <li><%= link_to "iniciar sesión", :login %></li>
         <%end%>
+        <% if current_user %>
         <li><%= link_to "salir", :logout, method: :post %></li>
+        <%end%>
       </ul>
     </nav>
   </div>
