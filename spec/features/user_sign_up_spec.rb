@@ -1,8 +1,8 @@
 require 'rails_helper'
 
 describe "the signin process", :type => :feature do
-  let(:params) { { username: 'some_user', firstname: 'Some', lastname: 'User',
-               birthdate: '09-11-1988', email: 'some_email@mail.com', phone: '6665773',
+  let(:params) { { user_name: 'some_user', first_name: 'Some', lastname: 'User', identity: 'Some',
+               birth_date: '09-11-1988', email: 'some_email@mail.com', phone: '6665773',
                password: '12345', password_confirmation: '12345' } }
 
   scenario 'Shows the registration page' do
@@ -18,12 +18,11 @@ describe "the signin process", :type => :feature do
     visit new_user_path
     expect(page).to have_content('Formulario de Registro')
     fill_in 'user_username', with: 'new_user'
-    fill_in 'user_dni_number', with: 1234
     fill_in 'user_first_name', with: 'New'
     fill_in 'user_last_name', with: 'User'
+    fill_in 'user_identity', with: '1047401321'
     fill_in 'user_birth_date', with: '11-09-1988'
     fill_in 'user_email', with: 'newuser@mail.com'
-    fill_in 'user_phone', with: '6665773'
     fill_in 'user_password', with: 'blahpassword'
     fill_in 'user_password_confirmation', with: 'blahpassword'
 
