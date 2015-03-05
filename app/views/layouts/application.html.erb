@@ -8,6 +8,7 @@
     <%= render 'layouts/shim' %>
   </head>
   <body>
+    <%= render partial: "layouts/flash_messages", flash: flash %>
     <%= render 'layouts/header' %>
     <div class="container">
       <%= yield %>
