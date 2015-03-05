@@ -31,17 +31,21 @@ describe "the signin process", :type => :feature do
     expect(User.first.username).to eq('new_user') 
   end
 
-  def sign_up_with(params)
-    visit new_user_path
-    
-    fill_in 'Firstname', with: params[:firstname]
-    fill_in 'Lastname', with: params[:lastname]
-    fill_in 'Birth Date', with: params[:birthdate]
+  scenario 'Login as a registered user' do
+    params = { username: "user_1", first_name: "Juan", 
+                        last_name: "Perez", birth_date: '11-09-1988', 
+                        email:'my_email@email.com', 
+                        password: 'password_1', 
+                        password_confirmation: 'password_1'}
+    User.create(params)    
+    visit root_path
+    expect(page).to have_content('iniciar sesión')
+    click_link('iniciar sesión')
+    expect(page).to have_content('Login')
     fill_in 'Email', with: params[:email]
-    fill_in 'Phone', with: params[:phone]
     fill_in 'Password', with: params[:password]
-    fill_in 'Password Confirmation', with: params[:password_confirmation]
-    
-    click_button 'Sign up'
+    click_button 'Login'
+    expect(page).to have_content('my_email@email.com')
+
   end
 end
