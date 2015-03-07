@@ -1,6 +1,5 @@
 class UsersController < ApplicationController
   skip_before_filter :require_login, :only => [:new, :create]
-  before_action :set_date_format, only: [:create, :update]
 
 	def new
 		@user = User.new
@@ -8,8 +7,9 @@ class UsersController < ApplicationController
 
 	def create
 		@user = User.new(user_params)
+		@user.birth_date = Date.strptime(params["#{user_type}"]['birth_date'], '%m/%d/%Y').to_date
 		if @user.save
-			flash[:success] = 'Bienvenido !'
+			flash[:success] = 'Registro exitoso, inicie sesión para continuar.'
 			redirect_to login_path
 		else
 			flash[:error] = @user.errors.full_messages.join(',')
@@ -22,15 +22,16 @@ class UsersController < ApplicationController
 	end
 
 	def user_params
-		params.require(:user).permit(:username, :first_name, :last_name, 
-																 :birth_date, :email, 
-																 :password, :password_confirmation, :type)	
+		params.require(user_type.to_sym).permit(params["#{user_type}"].symbolize_keys.keys)
 	end
 
-	def set_date_format
-		formatted_date = (params['user']['birth_date']).to_date
-		params['user'].merge(birth_date: formatted_date)
+	def user_type
+		if params['user']
+			'user'
+		elsif params['lease_holder']
+			'lease_holder'
+		end		
 	end
-	private :set_date_format
+	private :user_type
 	
 end
