@@ -28,6 +28,9 @@
       <%= f.label :password_confirmation, "Confirmación" %>
       <%= f.password_field :password_confirmation %>
 
+      <%= f.label :user_type, "Deseo: " %>
+      <%= f.select :type, [['Vender/Arrendar', 'LeaseHolder'], ['Comprar/Alquilar', nil]]  %>
+
       <%= f.submit "Crear mi cuenta", class: "btn btn-primary" %>
     <% end %>
   </div>
