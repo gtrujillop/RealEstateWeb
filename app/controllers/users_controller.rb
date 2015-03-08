@@ -7,9 +7,10 @@ class UsersController < ApplicationController
 
 	def create
 		@user = User.new(user_params)
+		@user.birth_date = Date.strptime(params["#{user_type}"]['birth_date'], '%m/%d/%Y').to_date
 		if @user.save
-			flash[:success] = 'Bienvenido !'
-			redirect_to @user
+			flash[:success] = 'Registro exitoso, inicie sesión para continuar.'
+			redirect_to login_path
 		else
 			flash[:error] = @user.errors.full_messages.join(',')
 			render 'new'
@@ -21,9 +22,16 @@ class UsersController < ApplicationController
 	end
 
 	def user_params
-		params.require(:user).permit(:username, :first_name, :last_name, 
-																 :birth_date, :email, 
-																 :password, :password_confirmation)	
+		params.require(user_type.to_sym).permit(params["#{user_type}"].symbolize_keys.keys)
 	end
+
+	def user_type
+		if params['user']
+			'user'
+		elsif params['lease_holder']
+			'lease_holder'
+		end		
+	end
+	private :user_type
 	
 end
