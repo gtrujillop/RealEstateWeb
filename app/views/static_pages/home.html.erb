@@ -1,12 +1,13 @@
 <div class="center jumbotron">
-  <h1>Bienvenido a Real Estate Web</h1>
+  <h1>Real Estate Web</h1>
 
   <h2>
    El portal donde podrás encontrar el inmueble de tus sueños, o donde simplemente podrás ofrecerlo en venta o alquiler.
   </h2>
 
+  <div class="home_central_image">
+  	<%= image_tag "real_estate_home.jpg" %>
+  </div>
+
   <%= link_to "Regístrese !", new_user_path, class: "btn btn-lg btn-primary" %>
 </div>
-
-<%= link_to image_tag("rails.png", alt: "Rails logo"),
-            'http://rubyonrails.org/' %>
