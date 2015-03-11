@@ -31,6 +31,8 @@ gem 'bootstrap-datepicker-rails'
 gem 'date_validator'
 #user Auth
 gem 'sorcery'
+#navigation gem
+gem 'simple-navigation'
 # Use Unicorn as the app server
 # gem 'unicorn'
 
