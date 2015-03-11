@@ -64,6 +64,7 @@ describe "the signin process", :type => :feature do
     fill_in 'Password', with: params[:password]
     click_button 'Login'
     expect(page).to have_content('my_email@email.com')
+    expect(page).to have_content('user_1')
 
   end
 
