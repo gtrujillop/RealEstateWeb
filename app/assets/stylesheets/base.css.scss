@@ -1,7 +1,16 @@
 @import "bootstrap-sprockets";
 @import "bootstrap";
+@import "simple_navigation_bootstrap";
 
 /* universal */
+
+.menubar{
+  width: 20px;
+  height: 20px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+
+}
 
 .jumbotron {
   padding-top: 10px;
@@ -164,5 +173,3 @@ aside {
 .home_central_image {
   margin-bottom: 20px;
 }
-
-
