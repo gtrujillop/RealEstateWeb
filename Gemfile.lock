@@ -185,6 +185,8 @@ GEM
       activesupport (>= 3.0.0)
     simple-navigation (3.14.0)
       activesupport (>= 2.3.2)
+    simple_navigation_renderers (1.0.2)
+      simple-navigation (~> 3.11)
     slop (3.6.0)
     sorcery (0.9.0)
       bcrypt (~> 3.1)
@@ -241,6 +243,7 @@ DEPENDENCIES
   sdoc (~> 0.4.0)
   shoulda
   simple-navigation
+  simple_navigation_renderers
   sorcery
   spring
   turbolinks

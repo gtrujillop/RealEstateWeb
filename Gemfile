@@ -33,6 +33,7 @@ gem 'date_validator'
 gem 'sorcery'
 #navigation gem
 gem 'simple-navigation'
+gem 'simple_navigation_renderers'
 # Use Unicorn as the app server
 # gem 'unicorn'
 
