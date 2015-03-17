@@ -35,6 +35,7 @@ SimpleNavigation::Configuration.run do |navigation|
   # navigation.consider_item_names_as_safe = false
 
   # Define the primary navigation
+  navigation.renderer = SimpleNavigationRenderers::Bootstrap3
   navigation.items do |primary|
     # Add an item to the primary navigation. The following params apply:
     # key - a symbol which uniquely defines your navigation item in the scope of the primary_navigation
@@ -62,21 +63,21 @@ SimpleNavigation::Configuration.run do |navigation|
       sub_nav.item :show, 'Mis Negocios', '#'
     end
 
-    primary.item :usuarios, 'Usuarios', '#', if: -> { current_user.admin? } do |sub_nav|
+    primary.item :usuarios, 'Usuarios', '#', if: -> { current_user } do |sub_nav|
       sub_nav.item :show, 'Mis Negocios', '#'
     end
 
     # Add an item which has a sub navigation (same params, but with block)
-    primary.item :key_2, 'name', url, options do |sub_nav|
+    #primary.item :key_2, 'name', url, options do |sub_nav|
       # Add an item to the sub navigation (same params again)
-      sub_nav.item :key_2_1, 'name', url, options
-    end
+    #  sub_nav.item :key_2_1, 'name', url, options
+    #end
 
     # You can also specify a condition-proc that needs to be fullfilled to display an item.
     # Conditions are part of the options. They are evaluated in the context of the views,
     # thus you can use all the methods and vars you have available in the views.
-    primary.item :key_3, 'Admin', url, class: 'special', if: -> { current_user.admin? }
-    primary.item :key_4, 'Account', url, unless: -> { logged_in? }
+    #primary.item :key_3, 'Admin', url, class: 'special', if: -> { current_user.admin? }
+    #primary.item :key_4, 'Account', url, unless: -> { logged_in? }
 
     # you can also specify html attributes to attach to this particular level
     # works for all levels of the menu
