@@ -57,5 +57,18 @@ describe User do
 			expect(User.last.active).to be_truthy
 		end
 	end
+
+	describe "is_admin?" do
+		it 'returns true when the user has Administrator role' do	
+			admin_role = create(:admin)
+			user = create(:user, roles: [admin_role])
+			expect(user.is_admin?).to be_truthy
+		end
+		it 'returns false when the user has no Administrator role' do
+			role = create(:role)
+			user = create(:user, roles: [role])
+			expect(user.is_admin?).to be_falsey
+		end
+	end
   
 end

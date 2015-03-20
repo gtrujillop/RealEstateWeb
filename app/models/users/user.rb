@@ -10,6 +10,10 @@ class User < ActiveRecord::Base
 	has_many :user_roles
 	has_many :roles, through: :user_roles
 
+	def is_admin?
+		self.roles.map(&:name).include?("Administrator")
+	end
+
 	def set_is_active
 		self.update_column(:active, true)	
 	end
