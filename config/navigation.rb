@@ -50,8 +50,9 @@ SimpleNavigation::Configuration.run do |navigation|
         negocios.item :show, 'Mis Negocios', '#'
       end
 
-      user_options.item :usuarios, 'Usuarios', '#', if: -> { current_user } do |usuarios|
-        usuarios.item :show, 'Mis Negocios', '#'
+      user_options.item :usuarios, 'Usuarios', '#', if: -> { current_user.is_admin? } do |usuarios|
+        usuarios.item :show, 'Listar', '#'
+        usuarios.item :show_roles, 'Roles', '#'
       end
       
     end
