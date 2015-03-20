@@ -8,7 +8,7 @@ class SessionsController < ApplicationController
 
   def create
 		if @user  
-		  redirect_back_or_to root_url , :notice => "Bienvenido !"  
+		  redirect_back_or_to user_path(@user.id) , :notice => "Bienvenido !"  
 		else
 			flash[:error] = "Email o password erróneos."
 			render :new

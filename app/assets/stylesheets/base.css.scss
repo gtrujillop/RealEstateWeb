@@ -1,7 +1,22 @@
 @import "bootstrap-sprockets";
 @import "bootstrap";
+@import "bootstrap2_dropdown_submenu";
+@import "bootstrap2_navbar_divider_vertical";
+@import "simple_navigation_bootstrap_overrides";
 
 /* universal */
+
+section {
+  overflow: unset;
+}
+
+.menubar{
+  width: 20px;
+  height: 20px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+
+}
 
 .jumbotron {
   padding-top: 10px;
@@ -16,10 +31,6 @@
 
 body {
   padding-top: 60px;
-}
-
-section {
-  overflow: auto;
 }
 
 textarea {
@@ -149,6 +160,14 @@ aside {
     }
   }
 }
+/* userinfo */
+
+.user_info{
+  h1 {
+      font-size: 2em;
+      
+    }
+}
 
 .gravatar {
   float: left;
@@ -164,5 +183,3 @@ aside {
 .home_central_image {
   margin-bottom: 20px;
 }
-
-

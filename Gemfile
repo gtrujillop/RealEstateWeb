@@ -31,6 +31,10 @@ gem 'bootstrap-datepicker-rails'
 gem 'date_validator'
 #user Auth
 gem 'sorcery'
+#navigation gem for menus
+#gem 'simple-navigation'
+gem 'simple_navigation_renderers'
+#gem 'simple-navigation-bootstrap'
 # Use Unicorn as the app server
 # gem 'unicorn'
 
@@ -53,6 +57,8 @@ group :development, :test do
   gem 'spring'
 
   gem 'rspec-rails', '~> 3.0'
+  gem 'factory_girl_rails'
+  gem 'database_cleaner'
   gem 'capybara', '~> 2.4.4'
 end
 

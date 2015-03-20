@@ -69,6 +69,7 @@ GEM
       gherkin (~> 2.12)
       multi_json (>= 1.7.5, < 2.0)
       multi_test (>= 0.1.1)
+    database_cleaner (1.4.1)
     date_validator (0.7.1)
       activemodel
     debug_inspector (0.0.2)
@@ -76,6 +77,11 @@ GEM
     diff-lcs (1.2.5)
     erubis (2.7.0)
     execjs (2.3.0)
+    factory_girl (4.5.0)
+      activesupport (>= 3.0.0)
+    factory_girl_rails (4.5.0)
+      factory_girl (~> 4.5.0)
+      railties (>= 3.0.0)
     faraday (0.9.1)
       multipart-post (>= 1.2, < 3)
     gherkin (2.12.2)
@@ -183,6 +189,10 @@ GEM
     shoulda-context (1.2.1)
     shoulda-matchers (2.8.0)
       activesupport (>= 3.0.0)
+    simple-navigation (3.14.0)
+      activesupport (>= 2.3.2)
+    simple_navigation_renderers (1.0.2)
+      simple-navigation (~> 3.11)
     slop (3.6.0)
     sorcery (0.9.0)
       bcrypt (~> 3.1)
@@ -227,7 +237,9 @@ DEPENDENCIES
   capybara (~> 2.4.4)
   coffee-rails (~> 4.1.0)
   cucumber
+  database_cleaner
   date_validator
+  factory_girl_rails
   jbuilder (~> 2.0)
   jquery-rails
   mysql2
@@ -238,6 +250,7 @@ DEPENDENCIES
   sass-rails (~> 5.0)
   sdoc (~> 0.4.0)
   shoulda
+  simple_navigation_renderers
   sorcery
   spring
   turbolinks
