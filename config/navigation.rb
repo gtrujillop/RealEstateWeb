@@ -39,7 +39,7 @@ SimpleNavigation::Configuration.run do |navigation|
 
   navigation.items do |primary|
 
-    primary.item :user_options, 'Menu', '#', if: -> { current_user }, split: true do |user_options|
+    primary.item :user_options, {icon: "glyphicon glyphicon-list", title: "Menu"}, if: -> { current_user } do |user_options|
 
       user_options.item :propiedades, 'Propiedades', '#', if: -> { current_user } do |propiedades|
         propiedades.item :mostrar, 'Mis Propiedades', '#'
