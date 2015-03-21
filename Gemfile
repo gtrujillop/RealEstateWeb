@@ -60,6 +60,7 @@ group :development, :test do
   gem 'factory_girl_rails'
   gem 'database_cleaner'
   gem 'capybara', '~> 2.4.4'
+  gem "capybara-webkit"
 end
 
 group :cucumber do
