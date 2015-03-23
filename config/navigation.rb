@@ -41,8 +41,8 @@ SimpleNavigation::Configuration.run do |navigation|
 
     primary.item :user_options, {icon: "glyphicon glyphicon-list", title: "Menu"}, if: -> { current_user } do |user_options|
 
-      user_options.item :propiedades, 'Propiedades', '#', if: -> { current_user } do |propiedades|
-        propiedades.item :mostrar, 'Mis Propiedades', '#'
+      user_options.item :propiedades, 'Propiedades', '#', if: -> { current_user.is_a?(LeaseHolder) } do |propiedades|
+        propiedades.item :mostrar, 'Mis Propiedades', user_properties_path(current_user.id)
         propiedades.item :agregar, 'Nueva Propiedad', '#'
       end
 
