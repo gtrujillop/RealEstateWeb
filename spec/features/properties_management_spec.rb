@@ -14,5 +14,6 @@ describe "the properties management", :type => :feature, :js => true do
     page.find('a.dropdown-toggle').click
     page.find('li#propiedades.dropdown-submenu').hover
     click_link('Mis Propiedades')
+    expect(page).to have_content('Propiedades Registradas')
   end
 end
