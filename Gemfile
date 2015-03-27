@@ -37,6 +37,10 @@ gem 'simple_navigation_renderers'
 #gem 'simple-navigation-bootstrap'
 # Use Unicorn as the app server
 # gem 'unicorn'
+#geocoder
+gem 'geocoder'
+#gem for countries
+gem 'countries'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
