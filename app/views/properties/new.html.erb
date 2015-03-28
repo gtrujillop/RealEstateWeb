@@ -1,0 +1,36 @@
+<% provide(:title, 'Propiedades::Registrar') %>
+<% Cities.data_path = Rails.root.join('config','cities') %>
+<h1>Registro de Propiedad</h1>
+
+<div class="row">
+  <div class="col-md-6 col-md-offset-3">
+    <%= form_for @property, url: {action: "create"} do |f| %>
+
+    	<%@countries = Country.find_all_countries_by_region('Americas')%>
+    	<%= f.label :country, "País" %>
+      <%= f.select :country, @countries.map{ |u| [u.name, u.country_code] },
+               { include_blank: true },
+               { class: 'chosen-select' } %>
+      
+      <%= f.label :neighbor, "Barrio:" %>
+      <%= f.text_field :neighbor %>
+
+      <%= f.label :address, "Ubicación:" %>
+      <%= f.text_field :address %>
+
+      <%= f.label :area, "Área:" %>
+      <%= f.text_field :area %>
+
+      <%= f.label :building_name, "Urbanización:" %>
+      <%= f.text_field :building_name %>
+
+      <%= f.label :floors_number, "# Pisos:" %>
+      <%= f.text_field :floor %>
+			
+			<%= f.label :floors, "Piso:" %>
+      <%= f.text_field :floor %>
+
+      <%= f.submit "Registrar", class: "btn btn-primary" %>
+    <% end %>
+  </div>
+</div>

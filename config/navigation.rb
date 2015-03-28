@@ -43,7 +43,7 @@ SimpleNavigation::Configuration.run do |navigation|
 
       user_options.item :propiedades, 'Propiedades', '#', if: -> { current_user.is_a?(LeaseHolder) } do |propiedades|
         propiedades.item :mostrar, 'Mis Propiedades', user_properties_path(current_user.id)
-        propiedades.item :agregar, 'Nueva Propiedad', '#'
+        propiedades.item :agregar, 'Registrar Propiedad', new_user_property_path(current_user.id)
       end
 
       user_options.item :negocios, 'Negocios', '#', if: -> { current_user } do |negocios|

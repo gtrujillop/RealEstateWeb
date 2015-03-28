@@ -9,4 +9,12 @@ class PropertiesController < ApplicationController
 			render index
 		end
 	end
+
+	def new
+		@property = Property.new		
+	end
+
+	def create
+		
+	end
 end

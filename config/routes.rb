@@ -2,7 +2,7 @@ Rails.application.routes.draw do
 
   root 'static_pages#home'
   resources :users, only: [:new, :create, :show] do
-		resources :properties, only: [:index]
+		resources :properties, only: [:index, :new, :create]
   end
 
   resources :sessions, only: [:create]
