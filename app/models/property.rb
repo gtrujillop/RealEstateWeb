@@ -1,6 +1,6 @@
 class Property < ActiveRecord::Base
 	Cities.data_path = Rails.root.join('config', 'extras', 'cities')
-	attr_accessor :country
+
 	attr_accessor :city
 	validates :area, presence: true, 
 							numericality: true

@@ -1,14 +1,13 @@
 <% provide(:title, 'Propiedades::Registrar') %>
-<% Cities.data_path = Rails.root.join('config','cities') %>
+<% Cities.data_path = Rails.root.join('config', 'extras', 'cities') %>
 <h1>Registro de Propiedad</h1>
 
 <div class="row">
   <div class="col-md-6 col-md-offset-3">
-    <%= form_for @property, url: {action: "create"} do |f| %>
-
-    	<%@countries = Country.find_all_countries_by_region('Americas')%>
-    	<%= f.label :country, "País" %>
-      <%= f.select :country, @countries.map{ |u| [u.name, u.country_code] },
+   	<%= form_for @property, url: {action: "create"} do |f| %>    	
+    	<%@countries = CountriesWithCitiesGrouper.new('Americas')%>
+    	<%= f.label :city, "Ciudad" %>
+      <%= f.select :city, @countries.cities_for('Colombia'),
                { include_blank: true },
                { class: 'chosen-select' } %>
       
