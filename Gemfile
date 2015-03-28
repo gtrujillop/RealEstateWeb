@@ -41,6 +41,9 @@ gem 'simple_navigation_renderers'
 gem 'geocoder'
 #gem for countries
 gem 'countries'
+gem 'cities'
+#jquery chosen
+gem 'chosen-rails'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
