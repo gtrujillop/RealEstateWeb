@@ -24,10 +24,12 @@
       <%= f.text_field :building_name %>
 
       <%= f.label :floors_number, "# Pisos:" %>
-      <%= f.text_field :floor %>
+      <%= f.number_field :floors_number %>
 			
 			<%= f.label :floors, "Piso:" %>
-      <%= f.text_field :floor %>
+      <%= f.number_field :floor %>
+
+      <%= f.hidden_field :lease_holder_id, value: current_user.id %>
 
       <%= f.submit "Registrar", class: "btn btn-primary" %>
     <% end %>
