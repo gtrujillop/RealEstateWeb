@@ -3,6 +3,7 @@ class Property < ActiveRecord::Base
 
 	attr_accessor :city
 	attr_accessor :location
+	attr_accessor :neighbor
 
 	validates :area, presence: true, 
 							numericality: true
@@ -13,7 +14,6 @@ class Property < ActiveRecord::Base
   after_save :set_address
 
 	belongs_to :lease_holder
-	belongs_to :neighbor
 
 	geocoded_by :address
 	reverse_geocoded_by :latitude, :longitude
