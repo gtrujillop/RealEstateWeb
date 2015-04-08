@@ -16,10 +16,6 @@ describe Property do
 		it { should belong_to(:lease_holder) }
 	end
 
-	describe "relation with neighbor model" do
-		it { should belong_to(:neighbor) }
-	end
-
 	describe 'after_validations' do
 		it 'builds the property address' do
 			property = Property.new({ area: 65, building_name: 'Castellón de la Palma', 
