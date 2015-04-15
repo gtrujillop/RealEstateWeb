@@ -1,42 +1,45 @@
 class Property < ActiveRecord::Base
-	Cities.data_path = Rails.root.join('config', 'extras', 'cities')
+  Cities.data_path = Rails.root.join('config', 'extras', 'cities')
 
-	attr_accessor :city
-	attr_accessor :location
-	attr_accessor :neighbor
+  attr_accessor :city
+  attr_accessor :location
+  attr_accessor :neighbor
 
-	validates :area, presence: true, 
-							numericality: true
-	validates :floors_number, presence: true, 
-							numericality: { only_integer: true }
+  validates :area, presence: true,
+              numericality: true
+  validates :floors_number, presence: true,
+              numericality: { only_integer: true }
 
   after_save :set_is_active
-  after_save :set_address
 
-	belongs_to :lease_holder
+  before_validation(on: :create) do
+    self.address = full_address
+  end
 
-	geocoded_by :address
-	reverse_geocoded_by :latitude, :longitude
+  belongs_to :lease_holder
 
-	after_validation :geocode, if: ->(obj){ obj.address.present? and obj.address_changed? }
+  geocoded_by :address
+  reverse_geocoded_by :latitude, :longitude
 
-	def set_is_active
-		self.update_column(:is_active, true)
-	end
-	private :set_is_active
+  after_save :geocode, if: ->(obj){ obj.address.present? and obj.address_changed? }
 
-	def set_address
-		self.update_column(:address, full_address)	
-	end
-	private :set_address
+  def set_is_active
+    self.update_column(:is_active, true)
+  end
+  private :set_is_active
 
-	def full_address
-		location << ", #{city_and_country}"
-	end
-	private :full_address
+  def set_address
+    self.address = full_address
+  end
+  private :set_address
 
-	def city_and_country
-		city << ", Colombia"
-	end
-	private :city_and_country
+  def full_address
+    location << ", #{city_and_country}"
+  end
+  private :full_address
+
+  def city_and_country
+    city << ", Colombia"
+  end
+  private :city_and_country
 end
