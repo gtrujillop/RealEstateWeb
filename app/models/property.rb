@@ -19,6 +19,7 @@ class Property < ActiveRecord::Base
   belongs_to :lease_holder
 
   geocoded_by :address
+
   reverse_geocoded_by :latitude, :longitude
 
   after_save :geocode, if: ->(obj){ obj.address.present? and obj.address_changed? }
@@ -34,12 +35,12 @@ class Property < ActiveRecord::Base
   private :set_address
 
   def full_address
-    location << ", #{city_and_country}"
+    location << ", #{city_and_country}" unless location.nil?
   end
   private :full_address
 
   def city_and_country
-    city << ", Colombia"
+    city << ", Colombia" unless city.nil?
   end
   private :city_and_country
 end
