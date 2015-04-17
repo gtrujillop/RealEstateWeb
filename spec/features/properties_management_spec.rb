@@ -1,12 +1,12 @@
 require 'rails_helper'
 
 describe "the properties management", :type => :feature, :js => true do
-  
+
   scenario 'Shows the index properties for the leaseholder' do
-  	#TODO create an alternative scenario and
-  	#expectation to check that property attrs are rendered.
-  	page.driver.allow_url("secure.gravatar.com")
-  	user = create(:lease_holder)    
+    #TODO create an alternative scenario and
+    #expectation to check that property attrs are rendered.
+    page.driver.allow_url("secure.gravatar.com")
+    user = create(:lease_holder)
     visit root_path
     click_link('iniciar sesión')
     fill_in 'Email', with: user.email
@@ -20,8 +20,8 @@ describe "the properties management", :type => :feature, :js => true do
   end
 
   scenario 'Shows the properties menu for the leaseholder' do
-  	page.driver.allow_url("secure.gravatar.com")
-  	user = create(:lease_holder)    
+    page.driver.allow_url("secure.gravatar.com")
+    user = create(:lease_holder)
     visit root_path
     click_link('iniciar sesión')
     fill_in 'Email', with: user.email

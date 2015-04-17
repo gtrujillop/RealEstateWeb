@@ -2,8 +2,8 @@ require 'rails_helper'
 
 describe "the signin process", :type => :feature do
   let(:params) { { user_name: 'some_user', first_name: 'Some', lastname: 'User', identity: 'Some',
-               birth_date: '09-11-1988', email: 'some_email@mail.com', phone: '6665773',
-               password: '12345', password_confirmation: '12345' } }
+                   birth_date: '09-11-1988', email: 'some_email@mail.com', phone: '6665773',
+                   password: '12345', password_confirmation: '12345' } }
 
   scenario 'Shows the registration page' do
     visit root_path
@@ -28,7 +28,7 @@ describe "the signin process", :type => :feature do
     select('Vender/Arrendar', from: 'user_type')
     click_button('Crear mi cuenta')
     expect(LeaseHolder.all.count).to eq(1)
-    expect(LeaseHolder.first.username).to eq('new_user') 
+    expect(LeaseHolder.first.username).to eq('new_user')
   end
 
   scenario 'Saves a registered user as User' do
@@ -45,17 +45,17 @@ describe "the signin process", :type => :feature do
     select('Comprar/Alquilar', :from => 'user_type')
     click_button('Crear mi cuenta')
     expect(User.all.count).to eq(1)
-    expect(User.first.username).to eq('new_user') 
+    expect(User.first.username).to eq('new_user')
     expect(User.first.type).to eq('')
   end
 
   scenario 'Login as a registered user' do
-    params = { username: "user_1", first_name: "Juan", 
-                        last_name: "Perez", birth_date: '11-09-1988', 
-                        email:'my_email@email.com', 
-                        password: 'password_1', 
-                        password_confirmation: 'password_1'}
-    User.create(params)    
+    params = { username: "user_1", first_name: "Juan",
+               last_name: "Perez", birth_date: '11-09-1988',
+               email:'my_email@email.com',
+               password: 'password_1',
+               password_confirmation: 'password_1'}
+    User.create(params)
     visit root_path
     expect(page).to have_content('iniciar sesión')
     click_link('iniciar sesión')
@@ -69,11 +69,11 @@ describe "the signin process", :type => :feature do
   end
 
   scenario 'Login as a un-registered user' do
-    params = { username: "user_1", first_name: "Juan", 
-                        last_name: "Perez", birth_date: '11-09-1988', 
-                        email:'my_email@email.com', 
-                        password: 'password_1', 
-                        password_confirmation: 'password_1'}
+    params = { username: "user_1", first_name: "Juan",
+               last_name: "Perez", birth_date: '11-09-1988',
+               email:'my_email@email.com',
+               password: 'password_1',
+               password_confirmation: 'password_1'}
     visit root_path
     expect(page).to have_content('iniciar sesión')
     click_link('iniciar sesión')
