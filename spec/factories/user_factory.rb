@@ -1,5 +1,5 @@
 FactoryGirl.define do
-  
+
   factory :user do
     sequence(:username, Random.rand(1..20)) { |n| "jdoe#{n}" }
     first_name "John"
