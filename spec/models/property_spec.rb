@@ -28,10 +28,10 @@ describe Property do
     it 'geocodes the property adding latitude and longitude after validation after saving' do
       property = Property.new({ area: 65, building_name: 'Castellón de la Palma',
                                 floor: 307, floors_number: 12, lease_holder_id: 10,
-                                is_active: true, city: "Medellín", location: "Carrera 78A # 27-100"})
+                                city: "Medellín", location: "Carrera 78A # 27-100"})
       property.save
-      expect(property.latitude).to_not be_nil
-      expect(property.longitude).to_not be_nil
+      expect(Property.last.latitude).to_not be_nil
+      expect(Property.last.longitude).to_not be_nil
     end
 
     it 'sets is_active as true' do

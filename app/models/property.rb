@@ -10,11 +10,11 @@ class Property < ActiveRecord::Base
   validates :floors_number, presence: true,
               numericality: { only_integer: true }
 
-  after_save :set_is_active
-
   before_validation(on: :create) do
     self.address = full_address
   end
+
+  after_validation :geocode, if: ->(obj){ obj.address.present? and obj.address_changed? }
 
   belongs_to :lease_holder
 
@@ -22,7 +22,7 @@ class Property < ActiveRecord::Base
 
   reverse_geocoded_by :latitude, :longitude
 
-  after_save :geocode, if: ->(obj){ obj.address.present? and obj.address_changed? }
+  after_save :set_is_active
 
   def set_is_active
     self.update_column(:is_active, true)
