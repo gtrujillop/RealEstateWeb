@@ -10,24 +10,25 @@
     </div>
   </div>
   <div class="row">
-    <aside class="col-md-4">
+    <div class="property_info">
       <h1>Propiedades Registradas</h1>
-      <table>
+      <table class="table table-striped">
         <tr>
-          <th># Seq.</th>
-          <th>Dirección</th>
+          <td class="prop_header"># Seq.</td>
+          <td class="prop_header">Dirección</td>
+          <td class="prop_header">Mapa</td>
         </tr>
         <% @properties.each_with_index do |property, index| %>
           <tr>
-          <td><%= index+1 %></td>
-          <td><%= property.address %></td>
-          <% unless property.latitude.nil? && property.longitude.nil? %>
-            <td><%= image_tag "http://maps.google.com/maps/api/staticmap?size=200x200&sensor=false&zoom=16&markers=#{property.latitude}%2C#{property.longitude}" %>
-          <%end%>
-      </td>
-        </tr>
-      <% end %>
+            <td><%= index+1 %></td>
+            <td><%= property.address %></td>
+            <% unless property.latitude.nil? && property.longitude.nil? %>
+              <td><%= image_tag "http://maps.google.com/maps/api/staticmap?size=200x200&sensor=false&zoom=16&markers=#{property.latitude}%2C#{property.longitude}" %>
+            <%end%>
+            </td>
+          </tr>
+        <% end %>
       </table>
-    </aside>
+    </div>
   </div>
 </section>
