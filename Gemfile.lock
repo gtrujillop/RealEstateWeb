@@ -280,7 +280,6 @@ DEPENDENCIES
   cucumber
   database_cleaner
   date_validator
-  execjs (~> 2.5.2)
   factory_girl_rails
   geocoder
   jbuilder (~> 2.0)
