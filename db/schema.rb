@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150520003954) do
+ActiveRecord::Schema.define(version: 20150521225307) do
 
   create_table "cities", force: :cascade do |t|
     t.string   "name",              limit: 255
@@ -30,13 +30,17 @@ ActiveRecord::Schema.define(version: 20150520003954) do
   end
 
   create_table "operations", force: :cascade do |t|
-    t.decimal "payment",                precision: 10
+    t.decimal "payment",                 precision: 10
     t.date    "start_date"
     t.date    "end_date"
-    t.string  "duration",   limit: 255
-    t.boolean "status",     limit: 1
-    t.string  "type",       limit: 255
+    t.string  "duration",    limit: 255
+    t.boolean "status",      limit: 1
+    t.string  "type",        limit: 255
+    t.integer "property_id", limit: 4
+    t.boolean "is_active",   limit: 1
   end
+
+  add_index "operations", ["property_id"], name: "index_operations_on_property_id", using: :btree
 
   create_table "properties", force: :cascade do |t|
     t.decimal  "area",                            precision: 10
@@ -94,4 +98,5 @@ ActiveRecord::Schema.define(version: 20150520003954) do
     t.datetime "updated_at",                      null: false
   end
 
+  add_foreign_key "operations", "properties"
 end
