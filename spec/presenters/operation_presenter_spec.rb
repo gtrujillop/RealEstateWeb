@@ -1,8 +1,9 @@
 require 'rails_helper'
 describe OperationPresenter do
-  describe '.user_properties' do
-    let!(:lease_holder) { create(:lease_holder) }
-    let!(:property) { create(:property, lease_holder: lease_holder) }
+  let!(:lease_holder) { create(:lease_holder) }
+  let!(:property) { create(:property, lease_holder: lease_holder) }
+
+  describe '#user_properties' do
     context 'when user has properties' do
       it 'retreives all related properties' do
         presenter = OperationPresenter.new(lease_holder)
@@ -19,6 +20,15 @@ describe OperationPresenter do
         result = presenter.user_properties
         expect(result.size).to eq(0)
       end
+    end
+  end
+
+  describe '#address_from_properties' do
+    it 'retreives the address from each property' do
+      presenter = OperationPresenter.new(lease_holder)
+      result = presenter.address_from_properties
+      expect(result).to be_an(Array)
+      expect(result.first).to eq([property.address, property.id])
     end
   end
 end
