@@ -48,7 +48,7 @@ SimpleNavigation::Configuration.run do |navigation|
 
       user_options.item :operaciones, 'Operaciones', '#', if: -> { current_user.is_a?(LeaseHolder) } do |operaciones|
         operaciones.item :show, 'Mis Operaciones', '#'
-        operaciones.item :show, 'Nueva Operación', new_user_property_operation_path(current_user.id)
+        operaciones.item :show, 'Nueva Operación', new_user_operation_path(current_user.id)
       end
 
       user_options.item :usuarios, 'Usuarios', '#', if: -> { current_user.is_admin? } do |usuarios|

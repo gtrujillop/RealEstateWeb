@@ -2,10 +2,13 @@
 
 <div class="row">
   <div class="col-md-6 col-md-offset-3">
-   	<%= form_for @operation, url: {action: "create"} do |f| %>
+    <%= form_for @operation, url: {action: "create"} do |f| %>
+
+      <%= f.label :property_id, "Propiedad:" %>
+      <%= f.select :property_id, @presenter.address_from_properties %>
 
       <%= f.label :type, "Operación:" %>
-      <%= f.select :type [['Arrendar', 'Rent'], ['Vender', 'Sell']] %>
+      <%= f.select :type, [['Arrendar', 'Rent'], ['Vender', 'Sell']] %>
 
       <%= f.label :start_date, "Fecha de Inicio:" %>
       <%= f.text_field :start_date, 'data-provide' => 'datepicker' %>
@@ -13,11 +16,8 @@
       <%= f.label :end_date, "Fecha Final"%>
       <%= f.text_field :end_date, 'data-provide' => 'datepicker' %>
 
-      <%= f.label :payment, "Cuota _Mensual)/ Valor" %>
-      <%= f.number_field :quantity, nil, min: 100 %>
-
-      <%= f.hidden_field :lease_holder_id, value: current_user.id %>
-      <%= f.hidden_field :property_id, value: params[:id] %>
+      <%= f.label :payment, "Cuota Mensual/ Valor" %>
+      <%= f.number_field :payment, :class => 'text_field', :step => 'any' %>
 
       <%= f.submit "Registrar", class: "btn btn-primary" %>
     <% end %>
