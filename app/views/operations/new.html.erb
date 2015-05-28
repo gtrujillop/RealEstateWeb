@@ -8,7 +8,7 @@
       <%= f.select :property_id, @presenter.address_from_properties %>
 
       <%= f.label :type, "Operación:" %>
-      <%= f.select :type, [['Arrendar', 'Rent'], ['Vender', 'Sell']] %>
+      <%= f.select :type, [['Arrendar', 'Rental'], ['Vender', 'Sale']] %>
 
       <%= f.label :start_date, "Fecha de Inicio:" %>
       <%= f.text_field :start_date, 'data-provide' => 'datepicker' %>
