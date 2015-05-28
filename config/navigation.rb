@@ -30,7 +30,7 @@ SimpleNavigation::Configuration.run do |navigation|
   # The auto highlight feature is turned on by default.
   # This turns it off globally (for the whole plugin)
   # navigation.auto_highlight = false
-  
+
   # If this option is set to true, all item names will be considered as safe (passed through html_safe). Defaults to false.
   # navigation.consider_item_names_as_safe = false
 
@@ -46,17 +46,18 @@ SimpleNavigation::Configuration.run do |navigation|
         propiedades.item :agregar, 'Registrar Propiedad', new_user_property_path(current_user.id)
       end
 
-      user_options.item :negocios, 'Negocios', '#', if: -> { current_user } do |negocios|
-        negocios.item :show, 'Mis Negocios', '#'
+      user_options.item :operaciones, 'Operaciones', '#', if: -> { current_user.is_a?(LeaseHolder) } do |operaciones|
+        operaciones.item :show, 'Mis Operaciones', '#'
+        operaciones.item :show, 'Nueva Operación', new_user_operation_path(current_user.id)
       end
 
       user_options.item :usuarios, 'Usuarios', '#', if: -> { current_user.is_admin? } do |usuarios|
         usuarios.item :show, 'Listar', '#'
         usuarios.item :show_roles, 'Roles', '#'
       end
-      
+
     end
-   
+
     primary.dom_class = 'nav'
 
   end
