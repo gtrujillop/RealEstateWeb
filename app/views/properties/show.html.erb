@@ -1,0 +1,17 @@
+<% provide(:title, @user.username) %>
+<section>
+  <div class="row">
+		<div class="menubar"><%= render_navigation( expand_all: true) %></div>
+		<div class="user_info pull-right">
+  		<h1>
+    		<%= gravatar_for @user %>
+    		<%= @user.username %>
+  		</h1>
+		</div>
+  </div>
+  <div class="row">
+	  <aside class="col-md-4">
+	     <h1> BLAH </h1>
+	  </aside>
+  </div>
+</section>
