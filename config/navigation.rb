@@ -46,7 +46,7 @@ SimpleNavigation::Configuration.run do |navigation|
         propiedades.item :agregar, 'Registrar Propiedad', new_user_property_path(current_user.id)
       end
 
-      user_options.item :operaciones, 'Operaciones', '#', if: -> { current_user.is_a?(LeaseHolder) } do |operaciones|
+      user_options.item :operaciones, 'Operaciones', '#', if: -> { current_user.is_a?(LeaseHolder) || current_user.is_a?(Consultant) } do |operaciones|
         operaciones.item :show, 'Mis Operaciones', '#'
         operaciones.item :show, 'Nueva Operación', new_user_operation_path(current_user.id)
       end
