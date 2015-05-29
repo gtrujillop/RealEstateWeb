@@ -2,7 +2,7 @@ Rails.application.routes.draw do
 
   root 'static_pages#home'
   resources :users, only: [:new, :create, :show] do
-    resources :properties, only: [:index, :new, :create]
+    resources :properties, only: [:index, :new, :create, :show]
     resources :operations, only: [:new, :create, :index]
   end
 
