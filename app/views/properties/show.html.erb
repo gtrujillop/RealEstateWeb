@@ -1,17 +1,41 @@
-<% provide(:title, @user.username) %>
+<% provide(:title, "Mi Propiedad") %>
 <section>
   <div class="row">
 		<div class="menubar"><%= render_navigation( expand_all: true) %></div>
 		<div class="user_info pull-right">
   		<h1>
-    		<%= gravatar_for @user %>
-    		<%= @user.username %>
+        Detalles de la Propiedad
   		</h1>
 		</div>
   </div>
   <div class="row">
 	  <aside class="col-md-4">
-	     <h1> BLAH </h1>
+      <div id="property_address">
+        <h3> Dirección: </h3>
+        <%= @property.address %>
+      </div>
+      <div id="property_floor">
+        <h3> Piso: </h3>
+        <%= @property.floor %>
+      </div>
 	  </aside>
+    <aside class="col-md-4">
+      <div id="property_map">
+        <h3> Mapa: </h3>
+        <%= image_tag "http://maps.google.com/maps/api/staticmap?size=300x200&sensor=true&zoom=16&markers=#{@property.latitude}%2C#{@property.longitude}" %>
+      </div>
+    </aside>
+    <aside class="col-md-3">
+      <div id="property_opts_edit">
+        <%= link_to '#', class: "btn btn-default" do %>
+          <i class="glyphicon glyphicon-edit">Editar</i>
+        <% end %>
+      </div>
+      <div id="property_opts_drop">
+        <%= link_to '#', class: "btn btn-default" do %>
+          <i class="glyphicon glyphicon-remove">Borrar</i>
+        <% end %>
+      </div>
+    </aside>
   </div>
 </section>
