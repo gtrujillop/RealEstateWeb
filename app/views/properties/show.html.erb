@@ -18,6 +18,26 @@
         <h3> Piso: </h3>
         <%= @property.floor %>
       </div>
+      <div id="property_area">
+        <h3> Area: </h3>
+        <%= @property.area %> m2
+      </div>
+      <% if @property.building_name %>
+        <div id="property_building_name">
+          <h3> Edificio: </h3>
+          <%= @property.building_name %>
+        </div>
+      <% end %>
+      <div id="property_nearby_loc">
+        <h3> Lugares Cercanos: </h3>
+        <ol start='1'>
+          <% @locations = Location.near([@property.latitude, @property.longitude], 50, :order => :distance) %>
+
+          <% for property in @property.nearbys(10) %>
+            <li><%= link_to property.address, property %>(<%= property.distance.round(2) %> millas)</li>
+          <% end %>
+        </ol>
+      </div>
 	  </aside>
     <aside class="col-md-4">
       <div id="property_map">
@@ -28,12 +48,13 @@
     <aside class="col-md-3">
       <div id="property_opts_edit">
         <%= link_to '#', class: "btn btn-default" do %>
-          <i class="glyphicon glyphicon-edit">Editar</i>
+          <i class="glyphicon glyphicon-edit"></i>
         <% end %>
       </div>
+      <br/>
       <div id="property_opts_drop">
         <%= link_to '#', class: "btn btn-default" do %>
-          <i class="glyphicon glyphicon-remove">Borrar</i>
+          <i class="glyphicon glyphicon-remove"></i>
         <% end %>
       </div>
     </aside>
