@@ -20,15 +20,16 @@
         </tr>
         <% @properties.each_with_index do |property, index| %>
           <tr>
-            <td><%= index+1 %></td>
-            <td><%= property.address %></td>
+            <td>
+              <%= index+1 %>
+            </td>
+            <td>
+              <%= link_to "#{property.address}", user_property_path(current_user.id, property.id),title: 'Ver Propiedad', 'data-toggle' => 'tooltip', 'data-placement' => 'right' %>
+            </td>
             <% unless property.latitude.nil? && property.longitude.nil? %>
               <td><%= image_tag "http://maps.google.com/maps/api/staticmap?size=200x200&sensor=false&zoom=16&markers=#{property.latitude}%2C#{property.longitude}" %>
               </td>
             <%end%>
-            <td>
-              <%= link_to "show", user_property_path(property.id, current_user.id) %>
-            </td>
           </tr>
         <% end %>
       </table>
