@@ -31,7 +31,7 @@
       <div id="property_nearby_loc">
         <h3> Lugares Cercanos: </h3>
         <ol start='1'>
-          <% @locations = Location.near([@property.latitude, @property.longitude], 50, :order => :distance) %>
+          <% @locations = Property.near([@property.latitude, @property.longitude], 50, :order => :distance) %>
 
           <% for property in @property.nearbys(10) %>
             <li><%= link_to property.address, property %>(<%= property.distance.round(2) %> millas)</li>
