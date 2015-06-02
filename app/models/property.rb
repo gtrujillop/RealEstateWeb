@@ -29,11 +29,6 @@ class Property < ActiveRecord::Base
   end
   private :set_is_active
 
-  def set_address
-    self.address = full_address
-  end
-  private :set_address
-
   def full_address
     location << ", #{city_and_country}" unless location.nil?
   end
