@@ -24,12 +24,12 @@ class Location < ActiveRecord::Base
 	private :set_is_active
 
 	def full_address
-		base_address << ", #{city_and_country}"
+		base_address << ", #{city_and_country}" unless base_address.nil?
 	end
 	private :full_address
 
 	def city_and_country
-		city << ", Colombia"
+		city << ", Colombia" unless city.nil?
 	end
 	private :city_and_country
 end
