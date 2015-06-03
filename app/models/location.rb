@@ -5,6 +5,8 @@ class Location < ActiveRecord::Base
   attr_accessor :base_address
 
   validates :description, length: { maximum: 500 }
+  validates :city, presence: true
+  validates :base_address, presence: true
 
   after_save :set_is_active
 
