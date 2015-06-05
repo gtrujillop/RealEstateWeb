@@ -1,4 +1,5 @@
 {<img src="https://codeclimate.com/github/gtrujillop/RealEstateWeb/badges/gpa.svg" />}[https://codeclimate.com/github/gtrujillop/RealEstateWeb]
+{<img src="https://codeclimate.com/github/gtrujillop/RealEstateWeb/badges/coverage.svg" />}[https://codeclimate.com/github/gtrujillop/RealEstateWeb/coverage]
 
 == README
 
