@@ -1,0 +1,14 @@
+<% provide(:title, 'Cargar POIs') %>
+<h1>Cargar Sitios de Interés</h1>
+
+<div class="row">
+  <div class="col-md-6 col-md-offset-3">
+    <%= form_for @location, url: locations_import_path do |f| %>
+
+      <%= f.label :file_loader, "Cargar archivo CSV" %>
+      <%= f.file_field :locations_csv , required: true %>
+
+      <%= f.submit "Cargar", class: "btn btn-primary" %>
+    <% end %>
+  </div>
+</div>

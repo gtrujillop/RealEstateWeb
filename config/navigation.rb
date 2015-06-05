@@ -56,6 +56,12 @@ SimpleNavigation::Configuration.run do |navigation|
         usuarios.item :show_roles, 'Roles', '#'
       end
 
+      user_options.item :lugares, 'Lugares', '#', if: -> { current_user.is_admin? } do |lugares|
+        lugares.item :show, 'Cargar', new_location_path
+        lugares.item :show_roles, 'Ver todos', '#'
+      end
+
+
     end
 
     primary.dom_class = 'nav'
