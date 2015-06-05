@@ -1,13 +1,17 @@
 == README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+RealEstateWeb
+
+Is a free App for Real Estate operations. An user can sign up and sell/rent or just look for a department or house located at the place and with the conditions the user is looking for.
 
 Things you may want to cover:
 
-* Ruby version
+* Ruby version: 
+  Ruby 2.1.2p95
+  Rails 4.2.0
 
 * System dependencies
+  MySQL 5.1
 
 * Configuration
 
@@ -21,8 +25,3 @@ Things you may want to cover:
 
 * Deployment instructions
 
-* ...
-
-
-Please feel free to use a different markup language if you do not plan to run
-<tt>rake doc:app</tt>.
