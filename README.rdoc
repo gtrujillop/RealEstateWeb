@@ -1,28 +1,18 @@
+{<img src="https://codeclimate.com/github/gtrujillop/RealEstateWeb/badges/gpa.svg" />}[https://codeclimate.com/github/gtrujillop/RealEstateWeb]
+{<img src="https://codeclimate.com/github/gtrujillop/RealEstateWeb/badges/coverage.svg" />}[https://codeclimate.com/github/gtrujillop/RealEstateWeb/coverage]
+
+{<img src='https://semaphoreci.com/api/v1/projects/f368c43b-04d9-450c-946b-ae93790083c3/444996/shields_badge.svg' alt='Build Status'/>}[https://semaphoreci.com/gtrujillop/realestateweb]
 == README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+RealEstateWeb
 
-Things you may want to cover:
+Is a free App for Real Estate operations. An user can sign up and sell/rent or just look for a department or house located at the place and with the conditions the user is looking for.
 
-* Ruby version
+* Ruby version: 
+  Ruby 2.1.2p95
+  Rails 4.2.0
 
 * System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
-
-
-Please feel free to use a different markup language if you do not plan to run
-<tt>rake doc:app</tt>.
+  MySQL 5.1
+  
+  License: Apache 2.0
