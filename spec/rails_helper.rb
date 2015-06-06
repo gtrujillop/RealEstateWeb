@@ -8,6 +8,9 @@ require 'shoulda/matchers'
 require 'support/shared_methods'
 require 'capybara/webkit/matchers'
 require 'capybara/rspec'
+require "codeclimate-test-reporter"
+
+CodeClimate::TestReporter.start
 
 Capybara.javascript_driver = :webkit
 # Add additional requires below this line. Rails is not loaded until this point!
