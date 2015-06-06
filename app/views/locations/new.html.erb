@@ -6,7 +6,7 @@
     <%= form_for @location, url: locations_import_path do |f| %>
 
       <%= f.label :file_loader, "Cargar archivo CSV" %>
-      <%= f.file_field :locations_csv , required: true %>
+      <%= f.file_field :locations_csv , required: true, accept: :csv %>
 
       <%= f.submit "Cargar", class: "btn btn-primary" %>
     <% end %>
