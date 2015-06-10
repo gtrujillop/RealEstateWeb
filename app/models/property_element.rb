@@ -1,5 +1,6 @@
 class PropertyElement < ActiveRecord::Base
   belongs_to :property
+  belongs_to :element_type
 
   validates :name, presence: true
   validates :description, presence: true
