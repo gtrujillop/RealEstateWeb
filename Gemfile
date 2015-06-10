@@ -43,7 +43,8 @@ gem 'countries'
 gem 'cities'
 #jquery chosen
 gem 'chosen-rails'
-
+#for image handling
+gem 'paperclip', '~> 4.2'
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
