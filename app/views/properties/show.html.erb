@@ -18,11 +18,19 @@
         <h3> Piso: </h3>
         <%= @property.floor %>
       </div>
+      <div id="property_value">
+        <h3> Valor: </h3>
+        <% if @property.value_for_sell.present? %>
+          <%= @property.value_for_sell %>
+        <% elsif @property.value_for_rental.present? %>
+          <%= @property.value_for_rental %>
+        <%end%>
+      </div>
       <div id="property_area">
         <h3> Area: </h3>
         <%= @property.area %> m2
       </div>
-      <% if @property.building_name %>
+      <% if @property.building_name.present? %>
         <div id="property_building_name">
           <h3> Edificio: </h3>
           <%= @property.building_name %>

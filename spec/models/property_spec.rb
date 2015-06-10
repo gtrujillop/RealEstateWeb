@@ -16,7 +16,7 @@ describe Property do
     it { should belong_to(:lease_holder) }
   end
 
-  describe 'validations' do
+  describe 'callbacks' do
     it 'builds the property address' do
       property = Property.new({ area: 65, building_name: 'Castellón de la Palma',
                                 floor: 307, floors_number: 12, lease_holder_id: 10,
@@ -40,6 +40,16 @@ describe Property do
                                 city: "Medellín", location: "Carrera 78A # 27-100"})
       property.save
       expect(Property.last.is_active).to be_truthy
+    end
+
+    it 'sets property value' do
+      property = Property.new({ area: 65, building_name: 'Castellón de la Palma',
+                                floor: 307, floors_number: 12, lease_holder_id: 10,
+                                city: "Medellín", location: "Carrera 78A # 27-100",
+                                operation_type: '1', value: 500000})
+      property.save
+      expect(Property.last.value_for_rental).to eq(500000.0)
+      expect(Property.last.value_for_sell).to be_nil
     end
   end
 end
