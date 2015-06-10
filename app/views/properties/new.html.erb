@@ -29,6 +29,15 @@
 			<%= f.label :floors, "Piso:" %>
       <%= f.number_field :floor %>
 
+      <%= f.label :op_rental, "Arrendar/Rentar"%>
+      <%= f.radio_button :operation_type, "0", required: true %>
+
+      <%= f.label :op_sell, "Vender" %>
+      <%= f.radio_button :operation_type, "1", required: true %>
+
+			<%= f.label :value, "Valor:" %>
+      <%= f.number_field :value %>
+
       <%= f.hidden_field :lease_holder_id, value: current_user.id %>
 
       <%= f.submit "Registrar", class: "btn btn-primary" %>
