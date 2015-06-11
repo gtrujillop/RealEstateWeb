@@ -62,6 +62,12 @@
       </div>
     </aside>
     <aside class="col-md-3">
+      <div id="property_elements">
+        <%= link_to new_user_property_property_element_path(current_user.id, @property.id), class: "btn btn-default" do %>
+          <i class="glyphicon glyphicon-wrench"></i>
+        <% end %>
+      </div>
+      <br/>
       <div id="property_opts_edit">
         <%= link_to '#', class: "btn btn-default" do %>
           <i class="glyphicon glyphicon-edit"></i>
