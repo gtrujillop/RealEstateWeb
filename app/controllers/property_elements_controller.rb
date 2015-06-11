@@ -1,13 +1,15 @@
 class PropertyElementsController < ApplicationController
+  before_filter :check_for_cancel, :only => [:create]
 
-  # def index
-  #   @user = LeaseHolder.find(params[:user_id])
-  #   @properties = @user.properties
-  #   if @properties.empty?
-  #     flash[:error] = "No tiene propiedades registradas a la fecha."
-  #     redirect_to user_path(@user.id)
-  #   end
-  # end
+  def index
+    @user = current_user
+    @property = Property.find(params[:property_id])
+    @property_elements = @property.property_elements
+    if @property_elements.empty?
+      flash[:error] = "La propiedad no tiene elementos"
+      redirect_to user_property_path(@user.id, @property.id)
+    end
+  end
 
   def new
     @property_element = PropertyElement.new
@@ -29,6 +31,13 @@ class PropertyElementsController < ApplicationController
   end
 
   def property_element_params
-    params.require(:property_element).permit(:name, :description, :image, :element_type)
+    params.require(:property_element).permit(:name, :description, :image, :element_type_id, :property_id)
+  end
+
+  def check_for_cancel
+    if(params.size == 5)
+      flash[:notice] = "Registro cancelado."
+      redirect_to user_property_property_elements_path(current_user.id, params[:property_id])
+    end
   end
 end

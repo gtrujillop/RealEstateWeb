@@ -8,8 +8,12 @@ class PropertyElementPresenter
     @user_property ||= Property.find(@property_id)
   end
 
-  def types
-    @types ||= ElementType.all.map(&:name)
+  def types_by_id
+    if ElementType.all.any?
+      @types ||= ElementType.all.each_with_object({}) do |memo, hsh|
+        hsh[memo.name] = memo.id
+      end
+    end
   end
 
 end

@@ -1,0 +1,42 @@
+<% provide(:title, 'Elementos') %>
+<section>
+  <div class="row">
+    <div class="menubar"><%= render_navigation( expand_all: true) %></div>
+  </div>
+  <div class="row">
+    <div class="property_info">
+      <div class="property_header">
+        <% @presenter = PropertyElementPresenter.new(params[:property_id]) %>
+        <h1>Elementos de la Propiedad</h1>
+        <h3><%= @presenter.property.address %></h3>
+     </div>
+      <table class="table table-striped">
+        <tr>
+          <td class="element_header">#</td>
+          <td class="element_header">Nombre.</td>
+          <td class="element_header">Detalles</td>
+          <td class="element_header">Foto</td>
+        </tr>
+        <% @property_elements.each_with_index do |element, index|%>
+            <tr>
+              <td>
+                <%= index+1 %>
+              </td>
+              <td>
+                <%= element.name %>
+              </td>
+              <td>
+                <%= element.description %>
+              </td>
+              <td>
+                <%= image_tag element.image.url(:medium) %>
+              </td>
+            </tr>
+        <% end %>
+      </table>
+    </div>
+    <%= link_to new_user_property_property_element_path(current_user.id, @presenter.property.id), class: "btn btn-default" do %>
+      <i class="glyphicon glyphicon-plus"></i>
+    <% end %>
+  </div>
+</section>
