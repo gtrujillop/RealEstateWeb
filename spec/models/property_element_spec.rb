@@ -18,7 +18,8 @@ describe PropertyElement do
   describe 'callbacks' do
 
     it 'sets is_active as true' do
-      element = PropertyElement.new({ name: 'Alcoba', description: 'Alcoba principal' })
+      image =  File.new(Rails.root + 'public/system/property_elements/images/000/000/009/original/bedroom_1.jpeg')
+      element = PropertyElement.new({ name: 'Alcoba', description: 'Alcoba principal', image: image})
       element.save
       expect(PropertyElement.last.is_active).to be_truthy
     end
