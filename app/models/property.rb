@@ -14,7 +14,7 @@ class Property < ActiveRecord::Base
 
   validates :floors_number, presence: true,
               numericality: { only_integer: true }
-
+  #TODO set numericality validation without break the spec.
   # validates :value_for_sell, numericality: true
   # validates :value_for_rental, numericality: true
 
