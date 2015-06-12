@@ -64,26 +64,26 @@
     <aside class="col-md-3">
       <div id="config_property_elements">
         <%= link_to user_property_property_elements_path(current_user.id, @property.id), class: "btn btn-default" do %>
-          <i class="glyphicon glyphicon-wrench"></i>
+          <i class="glyphicon glyphicon-wrench"> Configuración </i>
         <% end %>
       </div>
       <br/>
       <div id="property_opts_edit">
         <%= link_to '#', class: "btn btn-default" do %>
-          <i class="glyphicon glyphicon-edit"></i>
+          <i class="glyphicon glyphicon-edit"> Editar</i>
         <% end %>
       </div>
       <br/>
       <div id="property_opts_drop">
         <%= link_to '#', class: "btn btn-default" do %>
-          <i class="glyphicon glyphicon-remove"></i>
+          <i class="glyphicon glyphicon-remove"> Borrar </i>
         <% end %>
       </div>
       <div id="property_elements_prev">
         <% @elements_presenter = PropertyElementPresenter.new(@property.id) %>
         <% ElementType.all.each do |type| %>
           </br>
-          <%= type.name %>: <%= @elements_presenter.types_for_property[type.name] %>
+          <span class="<%= @elements_presenter.glyphicon_for_type(type.name) %>" ></span> <%= type.name %>: <%= @elements_presenter.types_for_property[type.name] %>
         <% end %>
       </div>
     </aside>

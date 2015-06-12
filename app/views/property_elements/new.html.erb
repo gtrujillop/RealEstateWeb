@@ -9,7 +9,7 @@
    	<%= form_for @property_element, url: {action: "create"} do |f| %>
 
       <%= f.label :type, "Tipo" %>
-      <%= f.select :element_type_id,  @presenter.types_by_id %>
+      <%= f.select :element_type_id,  @presenter.types_id_by_name %>
 
       <%= f.label :name, "Nombre" %>
       <%= f.text_field :name, required: true %>
