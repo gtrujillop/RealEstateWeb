@@ -11,13 +11,19 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150610033156) do
+ActiveRecord::Schema.define(version: 20150610172445) do
 
   create_table "cities", force: :cascade do |t|
     t.string   "name",              limit: 255
     t.text     "short_description", limit: 65535
     t.datetime "created_at",                      null: false
     t.datetime "updated_at",                      null: false
+  end
+
+  create_table "element_types", force: :cascade do |t|
+    t.string  "name",        limit: 255
+    t.text    "description", limit: 65535
+    t.boolean "is_active",   limit: 1
   end
 
   create_table "locations", force: :cascade do |t|
@@ -67,6 +73,25 @@ ActiveRecord::Schema.define(version: 20150610033156) do
     t.float    "value_for_rental",  limit: 24
   end
 
+  create_table "property_elements", force: :cascade do |t|
+    t.string   "name",                limit: 255
+    t.text     "description",         limit: 65535
+    t.string   "avatar_file_name",    limit: 255
+    t.string   "avatar_content_type", limit: 255
+    t.integer  "avatar_file_size",    limit: 4
+    t.datetime "avatar_updated_at"
+    t.boolean  "is_active",           limit: 1
+    t.string   "image_file_name",     limit: 255
+    t.string   "image_content_type",  limit: 255
+    t.integer  "image_file_size",     limit: 4
+    t.datetime "image_updated_at"
+    t.integer  "property_id",         limit: 4
+    t.integer  "element_type_id",     limit: 4
+  end
+
+  add_index "property_elements", ["element_type_id"], name: "index_property_elements_on_element_type_id", using: :btree
+  add_index "property_elements", ["property_id"], name: "index_property_elements_on_property_id", using: :btree
+
   create_table "roles", force: :cascade do |t|
     t.string "name",        limit: 255
     t.text   "description", limit: 65535
@@ -109,4 +134,6 @@ ActiveRecord::Schema.define(version: 20150610033156) do
   end
 
   add_foreign_key "operations", "properties"
+  add_foreign_key "property_elements", "element_types"
+  add_foreign_key "property_elements", "properties"
 end
