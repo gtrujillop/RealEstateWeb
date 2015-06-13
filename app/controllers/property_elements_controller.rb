@@ -7,7 +7,7 @@ class PropertyElementsController < ApplicationController
     @property_elements = @property.property_elements
     if @property_elements.empty?
       flash[:error] = "La propiedad no tiene elementos"
-      redirect_to user_property_path(@user.id, @property.id)
+      redirect_to new_user_property_property_element_path(@user.id, @property.id)
     end
   end
 
