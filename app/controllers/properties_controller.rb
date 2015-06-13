@@ -1,4 +1,6 @@
 class PropertiesController < ApplicationController
+  skip_before_filter :require_login, :only => [:show_all, :visit]
+
   def index
     @user = LeaseHolder.find(params[:user_id])
     @properties = @user.properties
@@ -31,5 +33,17 @@ class PropertiesController < ApplicationController
     params.require(:property).permit(:city, :value, :operation_type, :neighbor, :location,
                                     :area, :building_name, :floors_number,
                                     :floor, :lease_holder_id, :short_description)
+  end
+
+  def show_all
+    @properties ||= Property.all
+    if @properties.empty?
+      flash[:error] = "No hay propiedades registradas."
+      redirect_to root_path
+    end
+  end
+
+  def visit
+    @property = Property.find(params[:property_id])
   end
 end
