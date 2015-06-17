@@ -1,5 +1,7 @@
 <section>
   <div class="row">
+    <div class="property_filter">
+    </div>
     <div class="property_info">
       <h1>Propiedades Disponibles</h1>
       <table class="table table-striped">
@@ -24,5 +26,6 @@
         <% end %>
       </table>
     </div>
+    <%= will_paginate @properties %>
   </div>
 </section>

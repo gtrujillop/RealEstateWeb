@@ -45,6 +45,11 @@
           <% end %>
         </table>
       </div>
+      </br>
+      </br>
+      <%= link_to properties_show_all_path , class: "btn btn-primary" do %>
+        <i class="glyphicon glyphicon-chevron-left">Regresar</i>
+      <% end %>
 	  </aside>
     <aside class="col-md-4">
       <div id="property_map">
@@ -55,8 +60,20 @@
     <aside class="col-md-3">
       <div id="config_property_elements">
         <%= link_to '#', class: "btn btn-default" do %>
-          <i class="glyphicon glyphicon-wrench"> Hacer Oferta </i>
+          <i class="glyphicon glyphicon-screenshot">Ofertar</i>
         <% end %>
+        </br>
+        </br>
+        <%= link_to '#', class: "btn btn-default" do %>
+          <i class="glyphicon glyphicon-star">Calificar</i>
+        <% end %>
+        </br>
+        </br>
+        <%= link_to '#', class: "btn btn-default" do %>
+          <i class="glyphicon glyphicon-hand-right">Comentar</i>
+        <% end %>
+        </br>
+        </br>
       </div>
       <div id="property_elements_prev">
         <% @elements_presenter = PropertyElementPresenter.new(@property.id) %>
