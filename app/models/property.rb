@@ -34,6 +34,21 @@ class Property < ActiveRecord::Base
 
   after_save :set_is_active
 
+  #TODO add spec coverage for each scope case.
+  default_scope { where(is_active: true) }
+  scope :located_in, -> (location) { where("address like ?", "%#{location}%") }
+  #Property.area_greater_than(n).area_lesser_than(m) works like between
+  scope :area_greater_than, -> (area) { where("area >= ?", "#{area}") }
+  scope :area_lesser_than, -> (area) { where("area <= ?", "#{area}") }
+  #Property.for_sell.sell_greater_than(n).sell_lesser_than(m)
+  scope :for_sell, -> { where("value_for_rental is null") }
+  scope :sell_greater_than, -> (value) { where("value_for_sell >= ?", "#{value}") }
+  scope :sell_lesser_than, -> (value) { where("value_for_sell <= ?", "#{value}") }
+  #Property.for_rental.rental_greater_than(n).rental_lesser_than(m)
+  scope :for_rental, -> { where("value_for_sell is null") }
+  scope :rental_greater_than, -> (value) { where("value_for_rental >= ?", "#{value}") }
+  scope :rental_lesser_than, -> (value) { where("value_for_rental <= ?", "#{value}") }
+
   def set_is_active
     self.update_column(:is_active, true)
   end
