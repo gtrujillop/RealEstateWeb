@@ -36,7 +36,7 @@ class PropertiesController < ApplicationController
   end
 
   def show_all
-    @properties ||= Property.all
+    @properties ||= Property.paginate(page: params[:page], per_page: 10)
     if @properties.empty?
       flash[:error] = "No hay propiedades registradas."
       redirect_to root_path
