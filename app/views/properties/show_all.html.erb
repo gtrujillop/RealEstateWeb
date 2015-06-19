@@ -1,9 +1,35 @@
 <section>
   <div class="row">
-    <div class="property_filter">
-    </div>
+    <h1>Propiedades Disponibles</h1>
+    </br>
+    <%= form_tag properties_show_all_path, method: 'get', class: 'well form-search' do %>
+      <p>
+        <h3>Criterios de Búsqueda</h3>
+        <%= label_tag :for_rental, "Arriendo:" %>
+        <%= radio_button_tag :for_rental, 'Arriendo' %>
+        <%= label_tag :for_sell, "Venta:" %>
+        <%= radio_button_tag :for_sell, 'Venta' %>
+        <hr>
+        <%= label_tag :by_location, "Ubicación:" %>
+        <%= text_field_tag :located_in, 'ej. Bogotá', class: 'input-small' %>
+        <hr>
+        <h4>Area</h4>
+        <%= label_tag :area_from, "desde:" %>
+        <%= number_field_tag :area_greater_than, 0, class: 'input-small', within: 20...1000 %>
+        <%= label_tag :area_to, "hasta:" %>
+        <%= number_field_tag :area_lesser_than, 0, class: 'input-small', within: 20...1000 %>
+        <hr>
+        <h4>Precio</h4>
+        <%= label_tag :area_from, "desde:" %>
+        <%= number_field_tag :area_from, 0, class: 'input-small', min: 100000 %>
+        <%= label_tag :area_to, "hasta:" %>
+        <%= number_field_tag :area_to, 0, class: 'input-small', min: 200000 %>
+        <hr>
+        <%= submit_tag "Buscar" %>
+      </p>
+    <% end %>
+    </br>
     <div class="property_info">
-      <h1>Propiedades Disponibles</h1>
       <table class="table table-striped">
         <tr>
           <td class="prop_header"># Seq.</td>
