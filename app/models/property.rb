@@ -8,8 +8,6 @@ class Property < ActiveRecord::Base
   attr_accessor :city
   attr_accessor :location
   attr_accessor :neighbor
-  attr_accessor :value
-  attr_accessor :operation_type
 
   validates :area, presence: true,
               numericality: true
@@ -43,13 +41,10 @@ class Property < ActiveRecord::Base
   scope :area_greater_than, -> (area) { where("area >= ?", "#{area}") }
   scope :area_lesser_than, -> (area) { where("area <= ?", "#{area}") }
   #Property.for_sell.sell_greater_than(n).sell_lesser_than(m)
-  scope :for_sell, -> { where("value_for_rental is null") }
-  scope :sell_greater_than, -> (value) { where("value_for_sell >= ?", "#{value}") }
-  scope :sell_lesser_than, -> (value) { where("value_for_sell <= ?", "#{value}") }
+  scope :for_sell, -> (value) { where("for_sell = ?", "#{value}") }
   #Property.for_rental.rental_greater_than(n).rental_lesser_than(m)
-  scope :for_rental, -> { where("value_for_sell is null") }
-  scope :rental_greater_than, -> (value) { where("value_for_rental >= ?", "#{value}") }
-  scope :rental_lesser_than, -> (value) { where("value_for_rental <= ?", "#{value}") }
+  scope :value_greater_than, -> (value) { where("value >= ?", "#{value}") }
+  scope :value_lesser_than, -> (value) { where("value <= ?", "#{value}") }
 
   def set_is_active
     self.update_column(:is_active, true)
@@ -67,7 +62,7 @@ class Property < ActiveRecord::Base
   private :city_and_country
 
   def set_value
-    if operation_type == true
+    if for_sell == true
       self.value_for_sell = value
     else
       self.value_for_rental = value

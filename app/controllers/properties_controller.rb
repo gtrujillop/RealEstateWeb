@@ -36,13 +36,13 @@ class PropertiesController < ApplicationController
   end
 
   def show_all
-    @properties ||= Property.filter(params.slice(:for_rental, :for_sell, :located_in, :area_greater_than,
-                                                 :area_lesser_than, :sell_greater_than, :sell_lesser_than,
-                                                 :rental_greater_than, :rental_lesser_than))
-                            .paginate(page: params[:page], per_page: 10)
+    @properties ||= Property.filter(params.slice(:for_sell, :located_in, :area_greater_than,
+                                                 :area_lesser_than,
+                                                 :value_greather_than, :value_lesser_than))
+                            .paginate(page: params[:page], per_page: 1)
     if @properties.empty?
-      flash[:error] = "No hay propiedades registradas."
-      redirect_to root_path
+      flash[:error] = "No hay propiedades registradas que coincidan con esos criterios de búsqueda."
+      redirect_to properties_show_all_path
     end
   end
 

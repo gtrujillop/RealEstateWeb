@@ -30,10 +30,10 @@
       <%= f.number_field :floor %>
 
       <%= f.label :op_rental, "Arrendar/Rentar"%>
-      <%= f.radio_button :operation_type, "0", required: true %>
+      <%= f.radio_button :for_sell, "0", required: true %>
 
       <%= f.label :op_sell, "Vender" %>
-      <%= f.radio_button :operation_type, "1", required: true %>
+      <%= f.radio_button :for_sell, "1", required: true %>
 
 			<%= f.label :value, "Valor:" %>
       <%= f.number_field :value %>

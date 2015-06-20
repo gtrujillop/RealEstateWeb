@@ -2,56 +2,59 @@
   <div class="row">
     <h1>Propiedades Disponibles</h1>
     </br>
-    <%= form_tag properties_show_all_path, method: 'get', class: 'well form-search' do %>
-      <p>
-        <h3>Criterios de Búsqueda</h3>
-        <%= label_tag :for_rental, "Arriendo:" %>
-        <%= radio_button_tag :for_rental, 'Arriendo' %>
-        <%= label_tag :for_sell, "Venta:" %>
-        <%= radio_button_tag :for_sell, 'Venta' %>
-        <hr>
-        <%= label_tag :by_location, "Ubicación:" %>
-        <%= text_field_tag :located_in, 'ej. Bogotá', class: 'input-small' %>
-        <hr>
-        <h4>Area</h4>
-        <%= label_tag :area_from, "desde:" %>
-        <%= number_field_tag :area_greater_than, 0, class: 'input-small', within: 20...1000 %>
-        <%= label_tag :area_to, "hasta:" %>
-        <%= number_field_tag :area_lesser_than, 0, class: 'input-small', within: 20...1000 %>
-        <hr>
-        <h4>Precio</h4>
-        <%= label_tag :area_from, "desde:" %>
-        <%= number_field_tag :area_from, 0, class: 'input-small', min: 100000 %>
-        <%= label_tag :area_to, "hasta:" %>
-        <%= number_field_tag :area_to, 0, class: 'input-small', min: 200000 %>
-        <hr>
-        <%= submit_tag "Buscar" %>
-      </p>
-    <% end %>
-    </br>
-    <div class="property_info">
-      <table class="table table-striped">
-        <tr>
-          <td class="prop_header"># Seq.</td>
-          <td class="prop_header">Dirección</td>
-          <td class="prop_header">Mapa</td>
-        </tr>
-        <% @properties.each_with_index do |property, index| %>
-          <tr>
-            <td>
-              <%= index+1 %>
-            </td>
-            <td>
-              <%= link_to "#{property.address}", property_visit_path(property.id),title: 'Ver Propiedad', 'data-toggle' => 'tooltip', 'data-placement' => 'right' %>
-            </td>
-            <% unless property.latitude.nil? && property.longitude.nil? %>
-              <td><%= image_tag "http://maps.google.com/maps/api/staticmap?size=200x200&sensor=false&zoom=16&markers=#{property.latitude}%2C#{property.longitude}" %>
-              </td>
-            <%end%>
-          </tr>
+    <div class="row">
+      <div class="col-md-3">
+        <%= form_tag properties_show_all_path, method: 'get', class: 'well form-search' do %>
+          <p>
+            <h3>Criterios de Búsqueda</h3>
+            <%= label_tag :for_rental, "Arriendo:", required: true %>
+            <%= radio_button_tag :for_sell, '0' %>
+            <%= label_tag :for_sell, "Venta:" %>
+            <%= radio_button_tag :for_sell, '1', required: true %>
+            <h4>Ubicación</h4>
+            <%= text_field_tag :located_in, 'ej. Bogotá', class: 'input-small' %>
+            <h4>Area</h4>
+            <%= label_tag :area_from, "desde:" %>
+            <%= number_field_tag :area_greater_than, 0, class: 'input-small', within: 20...1000 %>
+            <%= label_tag :area_to, "hasta:" %>
+            <%= number_field_tag :area_lesser_than, 0, class: 'input-small', within: 20...1000 %>
+            <h4>Precio</h4>
+            <%= label_tag :area_from, "desde:" %>
+            <%= number_field_tag :value_greater_than, 0, class: 'input-small', min: 100000 %>
+            <%= label_tag :area_to, "hasta:" %>
+            <%= number_field_tag :value_lesser_than, 0, class: 'input-small', min: 200000 %>
+            <hr>
+            <%= submit_tag "Buscar" %>
+          </p>
         <% end %>
-      </table>
+      </div>
+      <div class="col-md-6 col-md-offset-1">
+        <div class="property_info">
+          <table class="table table-striped">
+            <tr>
+              <td class="prop_header"># Seq.</td>
+              <td class="prop_header">Dirección</td>
+              <td class="prop_header">Mapa</td>
+            </tr>
+            <% @properties.each_with_index do |property, index| %>
+              <tr>
+                <td>
+                  <%= index+1 %>
+                </td>
+                <td>
+                  <%= link_to "#{property.address}", property_visit_path(property.id),title: 'Ver Propiedad', 'data-toggle' => 'tooltip', 'data-placement' => 'right' %>
+                </td>
+                <% unless property.latitude.nil? && property.longitude.nil? %>
+                  <td><%= image_tag "http://maps.google.com/maps/api/staticmap?size=200x200&sensor=false&zoom=16&markers=#{property.latitude}%2C#{property.longitude}" %>
+                  </td>
+                <%end%>
+              </tr>
+            <% end %>
+          </table>
+        </div>
+        <%= will_paginate @properties %>
+      </div>
     </div>
-    <%= will_paginate @properties %>
+    </br>
   </div>
 </section>
