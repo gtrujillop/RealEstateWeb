@@ -29,15 +29,10 @@ class PropertiesController < ApplicationController
     end
   end
 
-  def property_params
-    params.require(:property).permit(:city, :value, :operation_type, :neighbor, :location,
-                                    :area, :building_name, :floors_number,
-                                    :floor, :lease_holder_id, :short_description)
-  end
 
   def show_all
     @properties ||= Property.filter(params.slice(:for_sell, :located_in, :area_greater_than,
-                                                 :area_lesser_than,
+                                                 :latitude, :longitude, :area_lesser_than,
                                                  :value_greather_than, :value_lesser_than))
                             .paginate(page: params[:page], per_page: 10)
     if @properties.empty?
@@ -48,5 +43,11 @@ class PropertiesController < ApplicationController
 
   def visit
     @property = Property.find(params[:property_id])
+  end
+
+  def property_params
+    params.require(:property).permit(:city, :value, :operation_type, :neighbor, :location,
+                                     :latitude, :longitude, :area, :building_name, :floors_number,
+                                     :floor, :lease_holder_id, :short_description)
   end
 end

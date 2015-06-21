@@ -37,6 +37,8 @@ class Property < ActiveRecord::Base
   #TODO add spec coverage for each scope case.
   default_scope { where(is_active: true) }
   scope :located_in, -> (location) { where("address like ?", "%#{location}%") }
+  scope :latitude, -> (value) { where("latitude = ?", "#{value}") }
+  scope :longitude, -> (value) { where("longitude = ?", "#{value}") }
   #Property.area_greater_than(n).area_lesser_than(m) works like between
   scope :area_greater_than, -> (area) { where("area >= ?", "#{area}") }
   scope :area_lesser_than, -> (area) { where("area <= ?", "#{area}") }

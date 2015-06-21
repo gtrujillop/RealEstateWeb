@@ -12,23 +12,24 @@
             <%= label_tag :for_sell, "Venta:" %>
             <%= radio_button_tag :for_sell, '1', required: true %>
             <h4>Ubicación</h4>
-            <%= text_field_tag :located_in, 'ej. Bogotá', class: 'input-small' %>
+            <%= text_field_tag :located_in, nil, class: 'input-small' %>
+            <%= render_gmap_coordinate_picker :lat_column => 'latitude', :lng_column => 'longitude' , :zoom_level => 4  %>
             <h4>Area</h4>
             <%= label_tag :area_from, "desde:" %>
-            <%= number_field_tag :area_greater_than, 0, class: 'input-small', within: 20...1000 %>
+            <%= number_field_tag :area_greater_than, 0, class: 'input-small' %>
             <%= label_tag :area_to, "hasta:" %>
-            <%= number_field_tag :area_lesser_than, 0, class: 'input-small', within: 20...1000 %>
+            <%= number_field_tag :area_lesser_than, 0, class: 'input-small' %>
             <h4>Precio</h4>
             <%= label_tag :area_from, "desde:" %>
-            <%= number_field_tag :value_greater_than, 0, class: 'input-small', min: 100000 %>
+            <%= number_field_tag :value_greater_than, 0, class: 'input-small' %>
             <%= label_tag :area_to, "hasta:" %>
-            <%= number_field_tag :value_lesser_than, 0, class: 'input-small', min: 200000 %>
+            <%= number_field_tag :value_lesser_than, 0, class: 'input-small' %>
             <hr>
             <%= submit_tag "Buscar" %>
           </p>
         <% end %>
       </div>
-      <div class="col-md-6 col-md-offset-1">
+      <div class="col-md-7 col-md-offset-1">
         <div class="property_info">
           <table class="table table-striped">
             <tr>
