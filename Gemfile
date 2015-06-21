@@ -38,6 +38,7 @@ gem 'simple_navigation_renderers'
 # gem 'unicorn'
 #geocoder
 gem 'geocoder'
+gem 'gmap_coordinates_picker'
 #gem for countries
 gem 'countries'
 gem 'cities'
