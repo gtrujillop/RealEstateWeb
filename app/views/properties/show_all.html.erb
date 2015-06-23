@@ -6,14 +6,13 @@
       <div class="col-md-3">
         <%= form_tag properties_show_all_path, method: 'get', class: 'well form-search' do %>
           <p>
-            <h3>Criterios de Búsqueda</h3>
+            <h3>Defina los criterios de Búsqueda</h3>
             <%= label_tag :for_rental, "Arriendo:", required: true %>
             <%= radio_button_tag :for_sell, '0' %>
             <%= label_tag :for_sell, "Venta:" %>
             <%= radio_button_tag :for_sell, '1', required: true %>
             <h4>Ubicación</h4>
             <%= text_field_tag :located_in, nil, class: 'input-small' %>
-            <%= render_gmap_coordinate_picker :lat_column => 'latitude', :lng_column => 'longitude' , :zoom_level => 4  %>
             <h4>Area</h4>
             <%= label_tag :area_from, "desde:" %>
             <%= number_field_tag :area_greater_than, 0, class: 'input-small' %>
@@ -24,6 +23,10 @@
             <%= number_field_tag :value_greater_than, 0, class: 'input-small' %>
             <%= label_tag :area_to, "hasta:" %>
             <%= number_field_tag :value_lesser_than, 0, class: 'input-small' %>
+            <hr>
+            <h4>Ó simplemente, seleccione un punto en el mapa</h4>
+            <%= render_gmap_coordinate_picker :lat_column => 'latitude', :lng_column => 'longitude' , :zoom_level => 4  %>
+            <hr>
             <hr>
             <%= submit_tag "Buscar" %>
           </p>

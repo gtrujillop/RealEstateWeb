@@ -31,13 +31,16 @@ class PropertiesController < ApplicationController
 
 
   def show_all
-    @properties ||= Property.filter(params.slice(:for_sell, :located_in, :area_greater_than,
-                                                 :latitude, :longitude, :area_lesser_than,
-                                                 :value_greather_than, :value_lesser_than))
-                            .paginate(page: params[:page], per_page: 10)
+    if params[:located_in] == '' && params[:latitude] != ''
+      @properties ||= Property.near([params[:latitude], params[:longitude]], 1, units: :km)
+                              .paginate(page: params[:page], per_page: 10)
+    else
+      @properties ||= Property.filter(params.slice(:for_sell, :located_in, :area_greater_than,
+                                                   :area_lesser_than, :value_greather_than, :value_lesser_than))
+                              .paginate(page: params[:page], per_page: 10)
+    end
     if @properties.empty?
-      flash[:error] = "No hay propiedades registradas que coincidan con esos criterios de búsqueda."
-      redirect_to properties_show_all_path
+      flash.now[:error] = "No hay propiedades registradas que coincidan con esos criterios de búsqueda."
     end
   end
 
