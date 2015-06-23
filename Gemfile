@@ -38,6 +38,7 @@ gem 'simple_navigation_renderers'
 # gem 'unicorn'
 #geocoder
 gem 'geocoder'
+gem 'gmap_coordinates_picker'
 #gem for countries
 gem 'countries'
 gem 'cities'
@@ -47,6 +48,8 @@ gem 'chosen-rails'
 gem 'paperclip', '~> 4.2'
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
+# add pagination on pages
+gem 'will_paginate'
 
 group :test do
 	gem 'shoulda'

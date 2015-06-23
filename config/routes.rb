@@ -12,4 +12,10 @@ Rails.application.routes.draw do
   post 'logout' => 'sessions#destroy', :as => :logout
   resources :locations, only: [:new]
   match '/locations/import', to: 'locations#import', via: :post
+  #handles properties for non registered users
+  #TODO remove default properties resources
+  match '/properties/show_all', to: 'properties#show_all', via: :get
+  resources :properties do
+    match 'visit', via: :get
+  end
 end

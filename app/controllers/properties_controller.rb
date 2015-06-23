@@ -1,4 +1,6 @@
 class PropertiesController < ApplicationController
+  skip_before_filter :require_login, :only => [:show_all, :visit]
+
   def index
     @user = LeaseHolder.find(params[:user_id])
     @properties = @user.properties
@@ -27,9 +29,28 @@ class PropertiesController < ApplicationController
     end
   end
 
+
+  def show_all
+    if params[:located_in] == '' && params[:latitude] != ''
+      @properties ||= Property.near([params[:latitude], params[:longitude]], 1, units: :km)
+                              .paginate(page: params[:page], per_page: 10)
+    else
+      @properties ||= Property.filter(params.slice(:for_sell, :located_in, :area_greater_than,
+                                                   :area_lesser_than, :value_greather_than, :value_lesser_than))
+                              .paginate(page: params[:page], per_page: 10)
+    end
+    if @properties.empty?
+      flash.now[:error] = "No hay propiedades registradas que coincidan con esos criterios de búsqueda."
+    end
+  end
+
+  def visit
+    @property = Property.find(params[:property_id])
+  end
+
   def property_params
     params.require(:property).permit(:city, :value, :operation_type, :neighbor, :location,
-                                    :area, :building_name, :floors_number,
-                                    :floor, :lease_holder_id, :short_description)
+                                     :latitude, :longitude, :area, :building_name, :floors_number,
+                                     :floor, :lease_holder_id, :short_description)
   end
 end

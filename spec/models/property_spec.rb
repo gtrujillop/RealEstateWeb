@@ -46,10 +46,37 @@ describe Property do
       property = Property.new({ area: 65, building_name: 'Castellón de la Palma',
                                 floor: 307, floors_number: 12, lease_holder_id: 10,
                                 city: "Medellín", location: "Carrera 78A # 27-100",
-                                operation_type: '1', value: 500000})
+                                for_sell: true, value: 500000, value_for_sell: 500000})
       property.save
-      expect(Property.last.value_for_rental).to eq(500000.0)
-      expect(Property.last.value_for_sell).to be_nil
+      expect(Property.last.value_for_sell).to eq(500000.0)
+      expect(Property.last.value_for_rental).to be_nil
+    end
+  end
+
+  describe '.scopes' do
+    let!(:property) { create(:property, area: 65, building_name: 'Castellón de la Palma',
+                                floor: 307, floors_number: 12, lease_holder_id: 10,
+                                city: "Medellín", location: "Carrera 78A # 27-100",
+                                for_sell: true, value: 500000, value_for_sell: 500000) }
+    it 'returns properties by address' do
+      result = Property.located_in('Medellín')
+      expect(result.first.building_name).to eq(property.building_name)
+      expect(result.first.is_active).to be_truthy
+    end
+
+    # it 'returns properties by latitude and longitude' do
+    #   result = Property.latitude(6.22957)
+    #   expect(result.first.building_name).to eq(property.building_name)
+    # end
+
+    it 'returns properties by value' do
+      result = Property.value_greater_than(100000)
+      expect(result.first.building_name).to eq(property.building_name)
+    end
+
+    it 'returns properties by area' do
+      result = Property.area_greater_than(10)
+      expect(result.first.building_name).to eq(property.building_name)
     end
   end
 end

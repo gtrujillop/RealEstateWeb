@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150610172445) do
+ActiveRecord::Schema.define(version: 20150620035344) do
 
   create_table "cities", force: :cascade do |t|
     t.string   "name",              limit: 255
@@ -71,6 +71,8 @@ ActiveRecord::Schema.define(version: 20150610172445) do
     t.float    "longitude",         limit: 24
     t.float    "value_for_sell",    limit: 24
     t.float    "value_for_rental",  limit: 24
+    t.boolean  "for_sell",          limit: 1
+    t.float    "value",             limit: 24
   end
 
   create_table "property_elements", force: :cascade do |t|
