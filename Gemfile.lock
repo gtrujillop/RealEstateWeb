@@ -1,5 +1,5 @@
 GIT
-  remote: git@github.com:gtrujillop/gmap_coordinates_picker.git
+  remote: git://github.com/gtrujillop/gmap_coordinates_picker.git
   revision: 5fea4cd59b762eef81e6a0c393d4b18b488ba6b1
   specs:
     gmap_coordinates_picker (0.1.0)
