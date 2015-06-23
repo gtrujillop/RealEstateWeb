@@ -13,6 +13,7 @@
 //= require jquery
 //= require jquery_ujs
 //= require chosen-jquery
+//= require property_filtering_control
 //= require jq_chosen
 //= require turbolinks
 //= require_tree
