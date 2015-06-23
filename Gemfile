@@ -38,7 +38,7 @@ gem 'simple_navigation_renderers'
 # gem 'unicorn'
 #geocoder
 gem 'geocoder'
-gem 'gmap_coordinates_picker', :git => "git@github.com:/gtrujillop/gmap_coordinates_picker.git"
+gem 'gmap_coordinates_picker', :git => "git@github.com:gtrujillop/gmap_coordinates_picker.git"
 #gem for countries
 gem 'countries'
 gem 'cities'
