@@ -52,7 +52,7 @@ gem 'paperclip', '~> 4.2'
 gem 'will_paginate'
 
 group :test do
-	gem 'shoulda'
+  gem 'shoulda'
 end
 
 gem 'codeclimate-test-reporter', group: :test, require: nil
