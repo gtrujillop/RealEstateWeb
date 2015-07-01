@@ -5,28 +5,28 @@
   <div class="col-md-6 col-md-offset-3">
     <%= form_for @user, url: {action: "create"} do |f| %>
       <%= f.label :username, "Usuario:" %>
-      <%= f.text_field :username %>
+      <%= f.text_field :username, required: true%>
 
       <%= f.label :identity, "Cédula:" %>
       <%= f.text_field :identity %>
 
       <%= f.label :first_name, "Nombres:" %>
-      <%= f.text_field :first_name %>
+      <%= f.text_field :first_name, required: true %>
 
       <%= f.label :last_name, "Apellido" %>
-      <%= f.text_field :last_name %>
+      <%= f.text_field :last_name, required: true %>
 
       <%= f.label :birth_date, "Nacido en:" %>
-      <%= f.text_field :birth_date, 'data-provide' => 'datepicker' %>
+      <%= f.text_field :birth_date, 'data-provide' => 'datepicker', required: true%>
 
       <%= f.label :email, "Email:" %>
-      <%= f.email_field :email %>
+      <%= f.email_field :email, required: true %>
 
       <%= f.label :password, "Contraseña" %>
-      <%= f.password_field :password %>
+      <%= f.password_field :password, required: true %>
 
       <%= f.label :password_confirmation, "Confirmación" %>
-      <%= f.password_field :password_confirmation %>
+      <%= f.password_field :password_confirmation, required: true %>
 
       <%= f.label :user_type, "Deseo: " %>
       <%= f.select :type, [['Vender/Arrendar', 'LeaseHolder'], ['Comprar/Alquilar', nil]]  %>
