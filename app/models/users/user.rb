@@ -6,6 +6,7 @@ class User < ActiveRecord::Base
   validates :birth_date, date: true
 
   after_save :set_is_active
+  # before_validation :set_date
 
   has_many :user_roles
   has_many :roles, through: :user_roles
@@ -13,6 +14,17 @@ class User < ActiveRecord::Base
   def is_admin?
     self.roles.map(&:name).include?("Administrator")
   end
+
+  # def set_date
+  #   self.update_column(:birth_date, formatted_birth_date)
+  # end
+  # private :set_date
+
+  # def formatted_birth_date
+  #   debugger
+  #   Date.strptime(self.birth_date, '%m/%d/%Y').to_date
+  # end
+  # private :formatted_birth_date
 
   def set_is_active
     self.update_column(:active, true)

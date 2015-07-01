@@ -7,8 +7,7 @@ class UsersController < ApplicationController
 
 	def create
 		@user = User.new(user_params)
-		@user.birth_date = Date.strptime(params["#{user_type}"]['birth_date'], '%m/%d/%Y').to_date
-		if @user.save
+    if @user.save
 			flash[:success] = 'Registro exitoso, inicie sesión para continuar.'
 			redirect_to login_path
 		else
@@ -30,8 +29,8 @@ class UsersController < ApplicationController
 			'user'
 		elsif params['lease_holder']
 			'lease_holder'
-		end		
+		end
 	end
 	private :user_type
-	
+
 end
