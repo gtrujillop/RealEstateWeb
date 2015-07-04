@@ -59,6 +59,11 @@
     </aside>
     <aside class="col-md-3">
       <div id="config_property_elements">
+        <%= link_to property_property_elements_show_all_path(@property.id), class: "btn btn-info" do %>
+          <i class="glyphicon glyphicon-ok-sign">Detalles</i>
+        <% end %>
+        </br>
+        </br>
         <%= link_to '#', class: "btn btn-default" do %>
           <i class="glyphicon glyphicon-screenshot">Ofertar</i>
         <% end %>

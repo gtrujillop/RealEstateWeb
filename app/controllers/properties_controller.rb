@@ -28,8 +28,7 @@ class PropertiesController < ApplicationController
       render 'new'
     end
   end
-
-
+  #TODO refactor this by using a presenter e.g PropertyPresenter
   def show_all
     if params[:located_in] == '' && params[:latitude] != ''
       @properties ||= Property.near([params[:latitude], params[:longitude]], 1, units: :km)
