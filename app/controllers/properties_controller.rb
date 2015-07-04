@@ -30,14 +30,7 @@ class PropertiesController < ApplicationController
   end
   #TODO refactor this by using a presenter e.g PropertyPresenter
   def show_all
-    if params[:located_in] == '' && params[:latitude] != ''
-      @properties ||= Property.near([params[:latitude], params[:longitude]], 1, units: :km)
-                              .paginate(page: params[:page], per_page: 10)
-    else
-      @properties ||= Property.filter(params.slice(:for_sell, :located_in, :area_greater_than,
-                                                   :area_lesser_than, :value_greather_than, :value_lesser_than))
-                              .paginate(page: params[:page], per_page: 10)
-    end
+    @properties = PropertyPresenter.new(params).filter_properties
     if @properties.empty?
       flash.now[:error] = "No hay propiedades registradas que coincidan con esos criterios de búsqueda."
     end
