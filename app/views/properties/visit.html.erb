@@ -29,7 +29,7 @@
       <% end %>
       <div id="property_nearby_loc">
         <h3> Lugares Cercanos: </h3>
-        <% @locations = Location.near([@property.latitude, @property.longitude], 1, units: :km) %>
+        <% @locations = Location.near([@property.latitude, @property.longitude], 2, units: :km) %>
         <table class="table table-striped">
           <tr>
             <td class="prop_header">Dirección</td>
