@@ -5,8 +5,9 @@ FactoryGirl.define do
     building_name "Castellón de la Palma"
     floor 1
     floors_number 12
-    address "Carrera 78A #28-100, Medellin Colombia"
     short_description nil
+    for_sell false
+    value_for_rental 2000000.0
     is_active true
     association :lease_holder, factory: :lease_holder
   end
