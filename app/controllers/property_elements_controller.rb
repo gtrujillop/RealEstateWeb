@@ -1,6 +1,8 @@
 class PropertyElementsController < ApplicationController
   before_filter :check_for_cancel, :only => [:create]
+  skip_before_filter :require_login, :only => [:show_all]
 
+  #TODO refactor this by using a PropertyElements presenter
   def index
     @user = current_user
     @property = Property.find(params[:property_id])
@@ -8,6 +10,16 @@ class PropertyElementsController < ApplicationController
     if @property_elements.empty?
       flash[:error] = "La propiedad no tiene elementos"
       redirect_to new_user_property_property_element_path(@user.id, @property.id)
+    end
+  end
+
+  def show_all
+    @user = current_user
+    @property = Property.find(params[:property_id])
+    @property_elements = @property.property_elements
+    if @property_elements.empty?
+      flash[:error] = "La propiedad no tiene elementos para mostrar"
+      redirect_to property_visit_path(@property.id)
     end
   end
 

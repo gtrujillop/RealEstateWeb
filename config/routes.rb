@@ -17,5 +17,6 @@ Rails.application.routes.draw do
   match '/properties/show_all', to: 'properties#show_all', via: :get
   resources :properties do
     match 'visit', via: :get
+    match '/property_elements/show_all', via: :get
   end
 end
