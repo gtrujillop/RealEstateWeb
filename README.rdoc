@@ -1,7 +1,5 @@
 {<img src="https://codeclimate.com/github/gtrujillop/RealEstateWeb/badges/gpa.svg" />}[https://codeclimate.com/github/gtrujillop/RealEstateWeb]
 
-{<img src="https://codeclimate.com/github/gtrujillop/RealEstateWeb/badges/coverage.svg" />}[https://codeclimate.com/github/gtrujillop/RealEstateWeb/coverage]
-
 {<img src='https://semaphoreci.com/api/v1/projects/f368c43b-04d9-450c-946b-ae93790083c3/444996/shields_badge.svg' alt='Build Status'/>}[https://semaphoreci.com/gtrujillop/realestateweb]
 == README
 
