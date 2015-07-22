@@ -7,6 +7,7 @@ class UsersController < ApplicationController
 
 	def create
 		@user = User.new(user_params)
+    @user.birth_date = Date.strptime(params["#{user_type}"]['birth_date'], '%m/%d/%Y').to_date
     if @user.save
 			flash[:success] = 'Registro exitoso, inicie sesión para continuar.'
 			redirect_to login_path
