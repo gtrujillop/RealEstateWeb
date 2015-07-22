@@ -19,10 +19,10 @@ class User < ActiveRecord::Base
   #   self.update_column(:birth_date, formatted_birth_date)
   # end
   # private :set_date
-
+  #
   # def formatted_birth_date
   #   debugger
-  #   Date.strptime(self.birth_date, '%m/%d/%Y').to_date
+  #   Date.strptime(self.birth_date, '%m/%d/%Y')
   # end
   # private :formatted_birth_date
 

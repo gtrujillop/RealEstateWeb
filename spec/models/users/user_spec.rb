@@ -58,11 +58,11 @@ describe User do
       end
 
       # it 'sets format to users birth date before validation' do
-      #   user = User.new({ username: "user_1", first_name: "Juan",
-      #                     last_name: "Perez", birth_date: '06/09/2014',
-      #                     email:'my_email@email.com',
-      #                     password: 'password_1',
-      #                     password_confirmation: 'password_1'})
+      #   user = User.new( username: "user_1", first_name: "Juan",
+      #                    last_name: "Perez", birth_date: "06/09/2014",
+      #                    email:'my_email@email.com',
+      #                    password: 'password_1',
+      #                    password_confirmation: 'password_1')
       #   user.save
       #   expect(User.last.birth_date).to be_a(Date)
       # end
