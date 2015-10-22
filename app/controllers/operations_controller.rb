@@ -2,10 +2,10 @@ class OperationsController < ApplicationController
 
   skip_before_filter :require_login
 
-	def new
-		@operation = Operation.new
+  def new
+    @operation = Operation.new
     @presenter = OperationPresenter.new(current_user)
-	end
+  end
 
   def create
     @operation = Operation.new(operation_params)
