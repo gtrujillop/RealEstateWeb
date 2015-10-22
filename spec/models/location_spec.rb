@@ -4,7 +4,7 @@ describe Location do
 
   describe "format validations" do
 
-   #it { should validate_length_of(:description).is_at_most(500) }
+    #it { should validate_length_of(:description).is_at_most(500) }
   end
 
   describe 'callbacks' do

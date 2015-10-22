@@ -55,9 +55,9 @@ describe Property do
 
   describe '.scopes' do
     let!(:property) { create(:property, area: 65, building_name: 'Castellón de la Palma',
-                                floor: 307, floors_number: 12, lease_holder_id: 10,
-                                city: "Medellín", location: "Carrera 78A # 27-100",
-                                for_sell: true, value: 500000, value_for_sell: 500000) }
+                             floor: 307, floors_number: 12, lease_holder_id: 10,
+                             city: "Medellín", location: "Carrera 78A # 27-100",
+                             for_sell: true, value: 500000, value_for_sell: 500000) }
     it 'returns properties by address' do
       result = Property.located_in('Medellín')
       expect(result.first.building_name).to eq(property.building_name)

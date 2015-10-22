@@ -12,5 +12,5 @@ describe 'DateProcessor' do
       future_date = Date.today
       expect(processor.months_between(future_date)).to eq(0)
     end
-  end
+    end
 end

@@ -18,10 +18,10 @@ describe PropertyPresenter do
       end
 
       let(:params) { { "latitude" => property.latitude,
-                      "longitude" => property.longitude, "for_sell" => "1",
-                      "located_in" => "", "area_greater_than" => "0",
-                      "area_lesser_than" => "0", "value_greater_than" => "0",
-                      "value_lesser_than" => "0" } }
+                       "longitude" => property.longitude, "for_sell" => "1",
+                       "located_in" => "", "area_greater_than" => "0",
+                       "area_lesser_than" => "0", "value_greater_than" => "0",
+                       "value_lesser_than" => "0" } }
 
       it 'filters with coordinates params' do
         results = PropertyPresenter.new(params).filter_properties
@@ -33,10 +33,10 @@ describe PropertyPresenter do
         create(:property, address: 'Centro Comercial El Tesoro, Medellín, Colombia')
       end
       let(:params) { { "latitude" => "", "longitude" => "",
-                      "for_sell" => "0", "located_in" => "Medellín",
-                      "area_greater_than" => "50", "area_lesser_than" => "200",
-                      "value_greater_than" => "100000",
-                      "value_lesser_than" => "2000000" } }
+                       "for_sell" => "0", "located_in" => "Medellín",
+                       "area_greater_than" => "50", "area_lesser_than" => "200",
+                       "value_greater_than" => "100000",
+                       "value_lesser_than" => "2000000" } }
 
       it 'filters with fields params' do
         pending('The property factory is not setting the data')
@@ -44,6 +44,6 @@ describe PropertyPresenter do
         expect(results.first).to eq(property)
       end
     end
-  end
+    end
 
 end

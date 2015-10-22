@@ -30,5 +30,5 @@ describe Operation do
       operation.save
       expect(operation.is_active).to eq(true)
     end
-  end
+end
 end

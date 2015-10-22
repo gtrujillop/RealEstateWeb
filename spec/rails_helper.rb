@@ -75,4 +75,4 @@ RSpec.configure do |config|
     page.driver.block_url("http://use.typekit.net")
     page.driver.allow_url("maps.google.com")
   end
-end
+  end

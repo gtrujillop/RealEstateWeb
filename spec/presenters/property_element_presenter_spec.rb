@@ -10,7 +10,7 @@ describe PropertyElementPresenter do
         expect(result).to eq(property)
       end
     end
-  end
+    end
 
   describe '#types_id_by_name' do
     let!(:element_type) { create(:element_type) }

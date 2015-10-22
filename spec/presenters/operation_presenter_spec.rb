@@ -21,7 +21,7 @@ describe OperationPresenter do
         expect(result.size).to eq(0)
       end
     end
-  end
+    end
 
   describe '#address_from_properties' do
     it 'retreives the address from each property' do

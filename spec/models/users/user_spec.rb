@@ -79,6 +79,6 @@ describe User do
         user = create(:user, roles: [role])
         expect(user.is_admin?).to be_falsey
       end
-    end
+      end
 
   end
