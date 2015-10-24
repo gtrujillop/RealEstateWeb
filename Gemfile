@@ -58,6 +58,7 @@ end
 gem 'codeclimate-test-reporter', group: :test, require: nil
 
 group :development, :test do
+  #gem 'webmock'
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug'
   # Use mysql2 as the database for Active Record
