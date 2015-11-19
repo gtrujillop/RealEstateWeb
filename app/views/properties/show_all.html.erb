@@ -5,16 +5,22 @@
     <div class="row">
       <div class="col-md-3">
         <%= form_tag properties_show_all_path, method: 'get', class: 'well form-search' do %>
-          <h3> Búsqueda </h3>
           <p>
-          <div class="prop_filter_by_map">
+          <div id="filter_options" class="prop_filter_by_map_button">
+            <h4> Activar Mapa </h4>
+          </div>
+          <p>
+          <div id="filter_options" class="prop_filter_button">
+            <h4> Activar Formulario </h4>
+          </div>
+          <p>
+          <div id="prop_filter_by_map" class="hidden">
             <h4>Seleccione un punto en el mapa</h4>
-            <h2> (si el mapa no carga, presione F5) </h2>
-            <%= render_gmap_coordinate_picker :lat_column => 'latitude', :lng_column => 'longitude' , :zoom_level => 4  %>
+            <%= render_gmap_coordinate_picker %>
           </div>
           <hr>
-          <div class="prop_filter">
-            <h4>Ó defina los criterios de Búsqueda</h4>
+          <div id="prop_filter" class="hidden">
+            <h4>Defina los criterios de Búsqueda</h4>
             <%= label_tag :for_rental, "Arriendo:", required: true %>
             <%= radio_button_tag :for_sell, '0' %>
             <%= label_tag :for_sell, "Venta:" %>

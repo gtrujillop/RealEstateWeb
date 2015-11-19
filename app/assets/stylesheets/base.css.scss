@@ -160,6 +160,17 @@ aside {
     }
   }
 }
+
+/* property filter */
+
+#filter_options{
+  display: block;
+  height: 40px;
+  line-height: 40px;
+  text-align: center;
+  border: 1px solid black;
+  border-radius: 6px;
+}
 /* userinfo */
 
 .user_info{
