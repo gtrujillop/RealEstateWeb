@@ -14,12 +14,12 @@
             <h4> Activar Formulario </h4>
           </div>
           <p>
-          <div class="prop_filter_by_map">
+          <div id="prop_filter_by_map" class="hidden">
             <h4>Seleccione un punto en el mapa</h4>
             <%= render_gmap_coordinate_picker %>
           </div>
           <hr>
-          <div class="prop_filter">
+          <div id="prop_filter" class="hidden">
             <h4>Defina los criterios de Búsqueda</h4>
             <%= label_tag :for_rental, "Arriendo:", required: true %>
             <%= radio_button_tag :for_sell, '0' %>
