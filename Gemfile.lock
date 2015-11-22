@@ -1,6 +1,6 @@
 GIT
   remote: git://github.com/gtrujillop/gmap_coordinates_picker.git
-  revision: 98dcb0ba490087cf235c4f96e5d9f5bce752e3f1
+  revision: 54a49844352ed9e8f970eebaae27332098403fec
   specs:
     gmap_coordinates_picker (0.1.0)
       rails (>= 3.1.0)
@@ -151,7 +151,7 @@ GEM
       nokogiri (>= 1.5.9)
     mail (2.6.3)
       mime-types (>= 1.16, < 3)
-    mime-types (2.6.2)
+    mime-types (2.99)
     mimemagic (0.3.0)
     mini_portile (0.6.2)
     minitest (5.8.3)
