@@ -1,5 +1,7 @@
 class PropertyElementPresenter
 
+  delegate :id, :address, to: :property, prefix: true
+
   def initialize(property_id)
     @property_id = property_id
   end
@@ -13,6 +15,8 @@ class PropertyElementPresenter
       @types ||= ElementType.all.each_with_object({}) do |memo, hsh|
         hsh[memo.name] = memo.id
       end
+    else
+      []
     end
   end
 

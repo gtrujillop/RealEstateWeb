@@ -7,7 +7,7 @@ FactoryGirl.define do
     floors_number 12
     short_description nil
     for_sell false
-    value_for_rental 2000000.0
+    value 2000000.0
     is_active true
     association :lease_holder, factory: :lease_holder
   end

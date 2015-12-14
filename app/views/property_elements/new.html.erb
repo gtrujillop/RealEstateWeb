@@ -2,7 +2,7 @@
 <% Cities.data_path = Rails.root.join('config', 'extras', 'cities') %>
 <h1>Registrar Elemento</h1>
 <% @presenter = PropertyElementPresenter.new(params[:property_id]) %>
-<h3>Propiedad: </h3> <h2><%= @presenter.property.address %></h2>
+<h3>Propiedad: </h3> <h2><%= @presenter.property_address %></h2>
 
 <div class="row">
   <div class="col-md-6 col-md-offset-3">
@@ -20,12 +20,12 @@
 			<%= f.label :image, "Cargar Imagen:" %>
       <%= f.file_field :image, accept: 'image/png,image/gif,image/jpeg, image/jpg', required: true %>
 
-      <%= f.hidden_field :property_id, value: @presenter.property.id %>
+      <%= f.hidden_field :property_id, value: @presenter.property_id %>
 
       <%= f.submit "Registrar", class: "btn btn-primary" %>
     <% end %>
     </br>
-    <%= button_to "Cancelar", user_property_property_elements_path(current_user.id, @presenter.property.id), class: "btn btn-danger" %>
+    <%= button_to "Cancelar", user_property_path(current_user.id, @presenter.property_id), method: :get, class: "btn btn-danger"%>
     </br>
   </div>
 </div>
