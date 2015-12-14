@@ -1,5 +1,7 @@
 class PropertyElementPresenter
 
+  delegate :id, :address, to: :property, prefix: true
+
   def initialize(property_id)
     @property_id = property_id
   end
