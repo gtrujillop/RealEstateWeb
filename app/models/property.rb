@@ -14,6 +14,8 @@ class Property < ActiveRecord::Base
 
   validates :floors_number, presence: true,
               numericality: { only_integer: true }
+
+  validates :value, numericality: true
   #TODO set numericality validation without break the spec.
   # validates :value_for_sell, numericality: true
   # validates :value_for_rental, numericality: true
@@ -21,8 +23,6 @@ class Property < ActiveRecord::Base
   before_validation(on: :create) do
     self.address = full_address
   end
-
-  after_validation :set_value
 
   after_validation :geocode, if: ->(obj){ obj.address.present? and obj.address_changed? }
 
@@ -62,13 +62,4 @@ class Property < ActiveRecord::Base
     city << ", Colombia" unless city.nil?
   end
   private :city_and_country
-
-  def set_value
-    if for_sell == true
-      self.value_for_sell = value
-    else
-      self.value_for_rental = value
-    end
-  end
-  private :set_value
 end
