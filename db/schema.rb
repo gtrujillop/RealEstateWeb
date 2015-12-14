@@ -69,8 +69,6 @@ ActiveRecord::Schema.define(version: 20150620035344) do
     t.integer  "lease_holder_id",   limit: 4
     t.float    "latitude",          limit: 24
     t.float    "longitude",         limit: 24
-    t.float    "value_for_sell",    limit: 24
-    t.float    "value_for_rental",  limit: 24
     t.boolean  "for_sell",          limit: 1
     t.float    "value",             limit: 24
   end
