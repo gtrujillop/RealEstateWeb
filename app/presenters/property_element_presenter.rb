@@ -13,6 +13,8 @@ class PropertyElementPresenter
       @types ||= ElementType.all.each_with_object({}) do |memo, hsh|
         hsh[memo.name] = memo.id
       end
+    else
+      []
     end
   end
 
