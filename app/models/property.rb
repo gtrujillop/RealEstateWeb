@@ -20,7 +20,7 @@ class Property < ActiveRecord::Base
   # validates :value_for_sell, numericality: true
   # validates :value_for_rental, numericality: true
 
-  before_validation(on: :create) do
+  before_validation(on: [:create, :update]) do
     self.address = full_address
   end
 
@@ -54,7 +54,11 @@ class Property < ActiveRecord::Base
   private :set_is_active
 
   def full_address
-    location << ", #{city_and_country}" unless location.nil?
+    if location.nil? || address.present?
+      address << ", #{city_and_country}"
+    else
+      location << ", #{city_and_country}"
+    end
   end
   private :full_address
 

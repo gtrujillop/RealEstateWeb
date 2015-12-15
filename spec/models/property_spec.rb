@@ -44,6 +44,26 @@ describe Property do
       property.save
       expect(Property.last.is_active).to be_truthy
     end
+
+    context 'When the property is updated' do
+      it "geocodes the property setting a new lat and log based on new address" do
+        property = Property.new({ area: 65,
+                                  building_name: 'Castellón de la Palma',
+                                  floor: 307,
+                                  floors_number: 12,
+                                  lease_holder_id: 10,
+                                  is_active: true, city: "Medellín",
+                                  location: "Carrera 78A # 27-100",
+                                  for_sell: true,
+                                  value: 50000000})
+        property.save
+        latitude = property.latitude
+        longitude = property.longitude
+        property.update_attributes(city: "Soacha", address: "Calle 31 a Bis Carrera 4 Este")
+        expect(property.latitude).not_to eq(latitude)
+        expect(property.longitude).not_to eq(longitude)
+      end
+    end
   end
 
   describe '.scopes' do
@@ -57,10 +77,10 @@ describe Property do
       expect(result.first.is_active).to be_truthy
     end
 
-    # it 'returns properties by latitude and longitude' do
-    #   result = Property.latitude(6.22957)
-    #   expect(result.first.building_name).to eq(property.building_name)
-    # end
+    it 'returns properties by latitude and longitude' do
+     result = Property.latitude(6.22957)
+     expect(result.first.building_name).to eq(property.building_name)
+    end
 
     it 'returns properties by value' do
       result = Property.value_greater_than(100000)
