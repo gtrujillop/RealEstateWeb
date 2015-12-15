@@ -28,7 +28,31 @@ class PropertiesController < ApplicationController
       render 'new'
     end
   end
-  #TODO refactor this by using a presenter e.g PropertyPresenter
+
+  def edit
+    @property = Property.find(params[:id])
+  end
+
+  def update
+    @property = Property.find(params[:id])
+    if @property.update_attributes(property_params)
+      flash[:success] = "Propiedad actualizada."
+      redirect_to @property
+    else
+      render 'edit'
+    end
+  end
+
+  def destroy
+    @property = Property.find(params[:id])
+    if @property.destroy
+      flash[:success] = "Propiedad eliminada."
+      redirect_to user_properties_path(current_user)
+    else
+      render 'show'
+    end
+  end
+
   def show_all
     @properties = PropertyPresenter.new(params).filter_properties
     if @properties.empty?
@@ -41,8 +65,9 @@ class PropertiesController < ApplicationController
   end
 
   def property_params
-    params.require(:property).permit(:city, :value, :operation_type, :neighbor, :location,
-                                     :latitude, :longitude, :area, :building_name, :floors_number,
-                                     :floor, :lease_holder_id, :short_description)
+    params.require(:property).permit(:city, :value, :neighbor, :location, :address,
+                                     :latitude, :longitude, :area, :building_name,
+                                     :floors_number, :floor, :for_sell, :lease_holder_id,
+                                     :short_description)
   end
 end
