@@ -43,6 +43,16 @@ class PropertiesController < ApplicationController
     end
   end
 
+  def destroy
+    @property = Property.find(params[:id])
+    if @property.destroy
+      flash[:success] = "Propiedad eliminada."
+      redirect_to user_path(current_user)
+    else
+      render 'show'
+    end
+  end
+
   def show_all
     @properties = PropertyPresenter.new(params).filter_properties
     if @properties.empty?

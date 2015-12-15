@@ -46,4 +46,10 @@ describe "the properties management", :type => :feature do
     click_button('Guardar')
     expect(Property.last.area).to eq(100)
   end
+
+  scenario 'deletes the user property', js: true do
+    visit user_property_path(user.id, property.id)
+    click_link('Eliminar')
+    expect(Property.all).to be_empty
+  end
 end
