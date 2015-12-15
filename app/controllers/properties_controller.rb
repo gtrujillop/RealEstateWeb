@@ -47,7 +47,7 @@ class PropertiesController < ApplicationController
     @property = Property.find(params[:id])
     if @property.destroy
       flash[:success] = "Propiedad eliminada."
-      redirect_to user_path(current_user)
+      redirect_to user_properties_path(current_user)
     else
       render 'show'
     end

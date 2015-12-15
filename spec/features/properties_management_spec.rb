@@ -44,12 +44,20 @@ describe "the properties management", :type => :feature do
     fill_in 'property_area', with: '100'
     select 'Vender', from: "property_for_sell"
     click_button('Guardar')
-    expect(Property.last.area).to eq(100)
+    expect(property.area).to eq(100)
   end
 
   scenario 'deletes the user property', js: true do
     visit user_property_path(user.id, property.id)
     click_link('Eliminar')
     expect(Property.all).to be_empty
+  end
+
+  scenario 'deletes the user property and related elements', js: true do
+    create(:property_element, property: property)
+    visit user_property_path(user.id, property.id)
+    click_link('Eliminar')
+    expect(Property.all).to be_empty
+    expect(PropertyElement.all).to be_empty
   end
 end

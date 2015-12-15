@@ -1,5 +1,5 @@
 class ElementType < ActiveRecord::Base
-  has_many :property_elements
+  has_many :property_elements, dependent: :destroy
 
   validates :name, presence: true
   validates :description, presence: true

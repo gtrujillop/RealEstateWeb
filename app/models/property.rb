@@ -1,7 +1,7 @@
 class Property < ActiveRecord::Base
   include Filterable
 
-  has_many :property_elements
+  has_many :property_elements, dependent: :destroy
 
   Cities.data_path = Rails.root.join('config', 'extras', 'cities')
 
