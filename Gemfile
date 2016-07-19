@@ -38,7 +38,7 @@ gem 'simple_navigation_renderers'
 # gem 'unicorn'
 #geocoder
 gem 'geocoder'
-gem 'gmap_coordinates_picker', github: "gtrujillop/gmap_coordinates_picker"
+gem 'gmap_coordinates_picker', git: "git@bitbucket.org:gtrujillop/gmap_coordinates_picker.git"
 #gem for countries
 gem 'countries'
 gem 'cities'
@@ -73,6 +73,7 @@ group :development, :test do
   gem 'database_cleaner'
   gem 'capybara', '~> 2.4.4'
   gem "capybara-webkit"
+  gem 'poltergeist'
 end
 
 group :cucumber do
@@ -83,4 +84,3 @@ group :production do
   gem 'pg',             '0.17.1'
   gem 'rails_12factor', '0.0.2'
 end
-

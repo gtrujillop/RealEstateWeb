@@ -8,11 +8,12 @@ require 'shoulda/matchers'
 require 'support/shared_methods'
 require 'capybara/webkit/matchers'
 require 'capybara/rspec'
-require "codeclimate-test-reporter"
+require 'codeclimate-test-reporter'
+require 'capybara/poltergeist'
 
 CodeClimate::TestReporter.start
 
-Capybara.javascript_driver = :webkit
+Capybara.javascript_driver = :poltergeist
 # Add additional requires below this line. Rails is not loaded until this point!
 
 # Requires supporting ruby files with custom matchers and macros, etc, in
@@ -34,6 +35,7 @@ Capybara.javascript_driver = :webkit
 # If you are not using ActiveRecord, you can remove this line.
 ActiveRecord::Migration.maintain_test_schema!
 
+
 RSpec.configure do |config|
   config.include FactoryGirl::Syntax::Methods
 
@@ -43,15 +45,19 @@ RSpec.configure do |config|
   # If you're not using ActiveRecord, or you'd prefer not to run each of your
   # examples within a transaction, remove the following line or assign false
   # instead of true.
-  config.use_transactional_fixtures = false
+  config.use_transactional_fixtures = true
 
-  config.before(:each) do
+  config.before(:each, js: true) do
+    self.use_transactional_fixtures = false
+    ActiveRecord::Base.establish_connection
     DatabaseCleaner.strategy = :truncation
     DatabaseCleaner.start
   end
 
-  config.after(:each) do
+  config.after(:each, js: true) do
     DatabaseCleaner.clean
+    ActiveRecord::Base.establish_connection
+    self.use_transactional_fixtures = true
   end
 
   config.include(Capybara::Webkit::RspecMatchers, :type => :feature)
@@ -70,9 +76,10 @@ RSpec.configure do |config|
   # The different available types are documented in the features, such as in
   # https://relishapp.com/rspec/rspec-rails/docs
   config.infer_spec_type_from_file_location!
-  config.before(:each, js: true) do
-    page.driver.allow_url("secure.gravatar.com")
-    page.driver.block_url("http://use.typekit.net")
-    page.driver.allow_url("maps.google.com")
+
+  Capybara::Webkit.configure do |config|
+    config.allow_url("secure.gravatar.com")
+    config.block_url("http://use.typekit.net")
+    config.allow_url("maps.google.com")
   end
-  end
+end

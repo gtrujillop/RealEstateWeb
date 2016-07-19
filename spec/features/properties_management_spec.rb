@@ -35,4 +35,29 @@ describe "the properties management", :type => :feature do
     click_button('Registrar')
     expect(Property.last).to_not be_nil
   end
+
+  scenario 'shows the edit property form' do
+    countries = double(CountriesWithCitiesGrouper)
+    allow(CountriesWithCitiesGrouper).to receive(:new).with('Americas') { countries }
+    allow(countries).to receive(:cities_for).with('Colombia') { ['Cartagena de Indias'] }
+    visit edit_user_property_path(user.id, property.id)
+    fill_in 'property_area', with: '100'
+    select 'Vender', from: "property_for_sell"
+    click_button('Guardar')
+    expect(property.area).to eq(100)
+  end
+
+  scenario 'deletes the user property', js: true do
+    visit user_property_path(user.id, property.id)
+    click_link('Eliminar')
+    expect(Property.all).to be_empty
+  end
+
+  scenario 'deletes the user property and related elements', js: true do
+    create(:property_element, property: property)
+    visit user_property_path(user.id, property.id)
+    click_link('Eliminar')
+    expect(Property.all).to be_empty
+    expect(PropertyElement.all).to be_empty
+  end
 end
