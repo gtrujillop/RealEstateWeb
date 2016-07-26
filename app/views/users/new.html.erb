@@ -2,7 +2,7 @@
 <h1>Formulario de Registro</h1>
 
 <div class="row">
-  <div class="col-md-6 col-md-offset-3">
+  <div class="col-md-4 col-md-offset-4">
     <%= form_for @user, url: {action: "create"} do |f| %>
       <%= f.label :username, "Usuario:" %>
       <%= f.text_field :username, required: true%>
