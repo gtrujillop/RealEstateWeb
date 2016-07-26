@@ -30,7 +30,7 @@ section {
 }
 
 body {
-  padding-top: 60px;
+
 }
 
 textarea {
@@ -43,6 +43,10 @@ textarea {
 
 .center h1 {
   margin-bottom: 10px;
+}
+
+.responsive-width {
+    font-size: 1.2em;
 }
 
 /* typography */
@@ -119,6 +123,7 @@ footer ul {
 footer ul li {
   float: left;
   margin-left: 15px;
+  padding: 15px;
 }
 
 /* forms */
@@ -204,5 +209,5 @@ aside {
 /* home */
 
 .home_central_image {
-  margin-bottom: 20px;
+  margin: 0 25% 20px 25%;
 }

@@ -6,13 +6,22 @@
     <%= javascript_include_tag 'application', params[:controller], 'data-turbolinks-track' => true %>
     <%= csrf_meta_tags %>
     <%= render 'layouts/shim' %>
+    <meta charset="utf-8" name="viewport" content="width=device-width, initial-scale=1">
   </head>
   <body>
-    <%= render partial: "layouts/flash_messages", flash: flash %>
-    <%= render 'layouts/header' %>
     <div class="container">
-      <%= yield %>
-      <%= render 'layouts/footer' %>
+       <div class="row">
+            <div class="col-md-12">
+                <%= render 'layouts/header' %>
+            </div>
+            <div class="col-md-12">
+                    <%= render partial: "layouts/flash_messages", flash: flash %>  
+            </div>
+            <div class="col-md-12">
+              <%= yield %>
+              <%= render 'layouts/footer' %>
+            </div>
+        </div>
     </div>
   </body>
 </html>

@@ -1,19 +1,39 @@
-<header class="navbar navbar-fixed-top navbar-inverse">
+<header class="navbar navbar-fixed-top navbar-inverse" role="navigation">
   <div class="container">
+     <div class="navbar-header">
+         <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-main-collapse">
+            Menu
+         </button>
+         <a class="navbar-brand page-scroll" href="#page-top">
     <%= link_to "Real Estate Web", '#', id: "logo" %>
+         </a>
+     </div>
     <nav>
-      <ul class="nav navbar-nav navbar-right">
-        <li><%= link_to "Home",   root_path %></li>
-        <li><%= link_to "Help",   '#' %></li>
-        <% if current_user %>
-          <li>Logged in as <%= link_to "#{current_user.email}", user_path(current_user.id) %></li>
-        <%else%>
-          <li><%= link_to "iniciar sesión", :login %></li>
-        <%end%>
-        <% if current_user %>
-        <li><%= link_to "salir", :logout, method: :post %></li>
-        <%end%>
-      </ul>
+        <div class="collapse navbar-collapse navbar-right navbar-main-collapse">
+            <ul class="nav navbar-nav">
+                <li class="hidden">
+                </li>
+                <li>
+                    <%= link_to "Home",   root_path %>
+                </li>
+                <li>
+                    <%= link_to "Help",   '#' %>
+                </li>
+                <% if current_user %>
+                <li>Logged in as <%= link_to "#{current_user.email}", user_path(current_user.id) %>
+                </li>
+                <%else%>
+                <li>
+                    <%= link_to "iniciar sesión", :login %>
+                </li>
+                <%end%>
+                <% if current_user %>
+                <li>
+                    <%= link_to "salir", :logout, method: :post %>
+                </li>
+                <%end%>
+            </ul>
+        </div>
     </nav>
   </div>
 </header>
