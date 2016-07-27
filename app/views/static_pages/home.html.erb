@@ -8,9 +8,10 @@
   <div class="home_central_image">
   	<%= image_tag("real_estate_home.jpg", :class => "img-responsive") %>
   </div>
-
-  <%= link_to "¡ Regístrese !", new_user_path, class: "btn btn-lg btn-primary responsive-width" %>
-  <br/>
-  <br/>
-  <%= link_to "Buscar Propiedades", properties_show_all_path, class: "btn btn-lg btn-info responsive-width" %>
+  <% if current_user %>
+  <%else%>
+    <%= link_to "¡ Regístrese !", new_user_path, class: "btn btn-lg btn-primary responsive-width" %>
+    <br />
+  <%end%>
+  <%= link_to "Buscar Propiedades", properties_show_all_path, class: "btn btn-lg btn-info responsive-width buscarp" %>
 </div>
