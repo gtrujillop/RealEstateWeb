@@ -11,11 +11,7 @@
       </div>
       <div id="property_value">
         <h3> Valor: </h3>
-        <% if @property.value_for_sell.present? %>
-          <%= @property.value_for_sell %>
-        <% elsif @property.value_for_rental.present? %>
-          <%= @property.value_for_rental %>
-        <%end%>
+          <%= @property.value %>
       </div>
       <div id="property_area">
         <h3> Area: </h3>
