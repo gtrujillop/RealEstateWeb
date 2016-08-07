@@ -1,5 +1,6 @@
-PATH
-  remote: /Users/cejaramillof/Downloads/gmap_coordinates_picker
+GIT
+  remote: git@bitbucket.org:gtrujillop/gmap_coordinates_picker.git
+  revision: 26017472e81caffbbbaccaffac2622691003bd5a
   specs:
     gmap_coordinates_picker (0.1.0)
       rails (>= 3.1.0)

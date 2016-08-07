@@ -1,37 +1,43 @@
-<% provide(:title, 'Sign Up') %>
-<h1>Formulario de Registro</h1>
+<div class="container">
+  <div class="jumbotron jumbotron-b">
+    <div class="row">
+        <% provide(:title, 'Sign Up') %>
+        <h1>Formulario de Registro</h1>
 
-<div class="row">
-  <div class="col-md-4 col-md-offset-4">
-    <%= form_for @user, url: {action: "create"} do |f| %>
-      <%= f.label :username, "Usuario:" %>
-      <%= f.text_field :username, required: true%>
+        <div class="row">
+          <div class="col-md-4 col-md-offset-4">
+            <%= form_for @user, url: {action: "create"} do |f| %>
+              <%= f.label :username, "Usuario:" %>
+              <%= f.text_field :username, required: true%>
 
-      <%= f.label :identity, "Cédula:" %>
-      <%= f.text_field :identity %>
+              <%= f.label :identity, "Cédula:" %>
+              <%= f.text_field :identity %>
 
-      <%= f.label :first_name, "Nombres:" %>
-      <%= f.text_field :first_name, required: true %>
+              <%= f.label :first_name, "Nombres:" %>
+              <%= f.text_field :first_name, required: true %>
 
-      <%= f.label :last_name, "Apellido" %>
-      <%= f.text_field :last_name, required: true %>
+              <%= f.label :last_name, "Apellido" %>
+              <%= f.text_field :last_name, required: true %>
 
-      <%= f.label :birth_date, "Nacido en:" %>
-      <%= f.text_field :birth_date, 'data-provide' => 'datepicker', required: true%>
+              <%= f.label :birth_date, "Nacido en:" %>
+              <%= f.text_field :birth_date, 'data-provide' => 'datepicker', required: true%>
 
-      <%= f.label :email, "Email:" %>
-      <%= f.email_field :email, required: true %>
+              <%= f.label :email, "Email:" %>
+              <%= f.email_field :email, required: true %>
 
-      <%= f.label :password, "Contraseña" %>
-      <%= f.password_field :password, required: true %>
+              <%= f.label :password, "Contraseña" %>
+              <%= f.password_field :password, required: true %>
 
-      <%= f.label :password_confirmation, "Confirmación" %>
-      <%= f.password_field :password_confirmation, required: true %>
+              <%= f.label :password_confirmation, "Confirmación" %>
+              <%= f.password_field :password_confirmation, required: true %>
 
-      <%= f.label :user_type, "Deseo: " %>
-      <%= f.select :type, [['Vender/Arrendar', 'LeaseHolder'], ['Comprar/Alquilar', nil]]  %>
+              <%= f.label :user_type, "Deseo: " %>
+              <%= f.select :type, [['Vender/Arrendar', 'LeaseHolder'], ['Comprar/Alquilar', nil]]  %>
 
-      <%= f.submit "Crear mi cuenta", class: "btn btn-primary" %>
-    <% end %>
+              <%= f.submit "Crear mi cuenta", class: "btn btn-primary" %>
+            <% end %>
+          </div>
+        </div>
+    </div>
   </div>
 </div>

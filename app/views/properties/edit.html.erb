@@ -1,32 +1,39 @@
-<% provide(:title, 'Propiedades::Registrar') %>
-<% Cities.data_path = Rails.root.join('config', 'extras', 'cities') %>
-<h1>Editar Propiedad</h1>
+<div class="container">
+  <div class="jumbotron jumbotron-b">
+    <div class="row">
+      <div class="menubar"><%= render_navigation( expand_all: true) %></div>
+    </div>
+    <% provide(:title, 'Propiedades::Registrar') %>
+    <% Cities.data_path = Rails.root.join('config', 'extras', 'cities') %>
+    <h1>Editar Propiedad</h1>
 
-<div class="row">
-  <div class="col-md-6 col-md-offset-3">
+    <div class="row">
+      <div class="col-md-6 col-md-offset-3">
 
-   	<%= form_for @property, url: {action: "update"} do |f| %>
-      <%= f.label :area, "Área del Inmueble*:" %>
-      <%= f.text_field :area %>
+        <%= form_for @property, url: {action: "update"} do |f| %>
+          <%= f.label :area, "Área del Inmueble*:" %>
+          <%= f.text_field :area %>
 
-      <%= f.label :floors_number, "# Pisos:" %>
-      <%= f.number_field :floors_number %>
+          <%= f.label :floors_number, "# Pisos:" %>
+          <%= f.number_field :floors_number %>
 
-			<%= f.label :floors, "Piso:" %>
-      <%= f.number_field :floor %>
+                <%= f.label :floors, "Piso:" %>
+          <%= f.number_field :floor %>
 
-      <%= f.label :op_rental, "Arrendar/Rentar"%>
-      <%= f.radio_button :for_sell, "0", required: true %>
+          <%= f.label :op_rental, "Arrendar/Rentar"%>
+          <%= f.radio_button :for_sell, "0", required: true %>
 
-      <%= f.label :op_sell, "Vender" %>
-      <%= f.radio_button :for_sell, "1", required: true %>
+          <%= f.label :op_sell, "Vender" %>
+          <%= f.radio_button :for_sell, "1", required: true %>
 
-			<%= f.label :value, "Valor:" %>
-      <%= f.number_field :value %>
+                <%= f.label :value, "Valor:" %>
+          <%= f.number_field :value %>
 
-      <%= f.hidden_field :lease_holder_id, value: current_user.id %>
+          <%= f.hidden_field :lease_holder_id, value: current_user.id %>
 
-      <%= f.submit "Actualizar", class: "btn btn-primary" %>
-    <% end %>
+          <%= f.submit "Actualizar", class: "btn btn-primary" %>
+        <% end %>
+      </div>
+    </div>
   </div>
 </div>

@@ -1,14 +1,23 @@
-<% provide(:title, 'Cargar POIs') %>
-<h1>Cargar Sitios de Interés</h1>
+<div class="container">
+  <div class="jumbotron jumbotron-b">
+    <div class="row">
+      <div class="menubar"><%= render_navigation( expand_all: true) %></div>
+    </div>
+      <div class="col-lg-12">  
+        <% provide(:title, 'Cargar POIs') %>
+        <h1>Cargar Sitios de Interés</h1>
 
-<div class="row">
-  <div class="col-md-6 col-md-offset-3">
-    <%= form_for @location, url: locations_import_path do |f| %>
+        <div class="row">
+          <div class="col-md-6 col-md-offset-3">
+            <%= form_for @location, url: locations_import_path do |f| %>
 
-      <%= f.label :file_loader, "Cargar archivo CSV" %>
-      <%= f.file_field :locations_csv , required: true, accept: :csv %>
+              <%= f.label :file_loader, "Cargar archivo CSV" %>
+              <%= f.file_field :locations_csv , required: true, accept: :csv %>
 
-      <%= f.submit "Cargar", class: "btn btn-primary" %>
-    <% end %>
+              <%= f.submit "Cargar", class: "btn btn-primary" %>
+            <% end %>
+          </div>
+        </div>
+      </div>
   </div>
 </div>

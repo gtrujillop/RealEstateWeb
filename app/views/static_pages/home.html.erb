@@ -1,17 +1,43 @@
-<div class="center jumbotron">
-  <h1>Real Estate Web</h1>
-
-  <h2>
-   El portal donde podrás encontrar el inmueble de tus sueños, o donde simplemente podrás ofrecerlo en venta o alquiler.
-  </h2>
-
-  <div class="home_central_image">
-  	<%= image_tag("real_estate_home.jpg", :class => "img-responsive") %>
-  </div>
-  <% if current_user %>
-  <%else%>
-    <%= link_to "¡ Regístrese !", new_user_path, class: "btn btn-lg btn-primary responsive-width" %>
-    <br />
-  <%end%>
-  <%= link_to "Buscar Propiedades", properties_show_all_path, class: "btn btn-lg btn-info responsive-width buscarp" %>
+<header>
+    <a name="about"></a>
+    <div class="intro-header">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="intro-text">
+                        <span class="name">Real Estate</span><br/>
+                        <span class="skills">El portal donde podrás encontrar el inmueble de tus sueños, <br/>o donde simplemente podrás ofrecerlo en venta o alquiler.</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+<div class="container">
+    <div class="center jumbotron">
+      <div class="row">
+      <div class="col-lg-12"><br/></div>  
+      </div>
+      <div class="row">
+        <div class="col-lg-6 title">
+          <h1>¡Bienvenidos!</h1>
+          <h2>Busque casas, apartamentos y otros inmuebles en venta o arriendo en la ciudad de Medellín.</h2>
+          <% if current_user %>
+          <%else%>
+            <%= link_to "¡ Regístrese !", new_user_path, class: "btn btn-lg btn-primary responsive-width" %>
+            <%= link_to "¡ Inicie Sesión !", :login, class: "btn btn-lg btn-success responsive-width" %>
+          <br />
+          <%end%>
+          <%= link_to "Buscar Propiedades", properties_show_all_path, class: "btn btn-lg btn-info responsive-width buscarp" %>
+        </div>
+        <div class="col-lg-6">
+          <%= image_tag("real_estate_home.jpg", :class => "img-responsive") %>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-lg-6 body">
+            
+        </div>
+      </div>
+    </div>
 </div>

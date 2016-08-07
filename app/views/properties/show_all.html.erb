@@ -1,75 +1,82 @@
-<section>
-  <div class="row">
-    <h1>Propiedades Disponibles</h1>
-    </br>
+<div class="container">
+  <div class="jumbotron jumbotron-b">
     <div class="row">
-      <div class="col-md-3">
-        <%= form_tag properties_show_all_path, method: 'get', class: 'well form-search' do %>
-          <p>
-          <div id="filter_options" class="prop_filter_by_map_button">
-            <h4> Activar Mapa </h4>
-          </div>
-          <p>
-          <div id="filter_options" class="prop_filter_button">
-            <h4> Activar Formulario </h4>
-          </div>
-          <p>
-          <div id="prop_filter_by_map" class="hidden">
-            <h4>Click sobre el mapa y seleccione un punto en el mapa donde desea buscar.</h4>
-            <%= render_gmap_coordinate_picker %>
-          </div>
-          <hr>
-          <div id="prop_filter" class="hidden">
-            <h4>Defina los criterios de Búsqueda</h4>
-            <%= label_tag :for_rental, "Arriendo:", required: true %>
-            <%= radio_button_tag :for_sell, '0' %>
-            <%= label_tag :for_sell, "Venta:" %>
-            <%= radio_button_tag :for_sell, '1', required: true %>
-            <h4>Ubicación</h4>
-            <%= text_field_tag :located_in, nil, class: 'input-small' %>
-            <h4>Area</h4>
-            <%= label_tag :area_from, "desde:" %>
-            <%= number_field_tag :area_greater_than, 0, class: 'input-small' %>
-            <%= label_tag :area_to, "hasta:" %>
-            <%= number_field_tag :area_lesser_than, 0, class: 'input-small' %>
-            <h4>Precio</h4>
-            <%= label_tag :area_from, "desde:" %>
-            <%= number_field_tag :value_greater_than, 0, class: 'input-small' %>
-            <%= label_tag :area_to, "hasta:" %>
-            <%= number_field_tag :value_lesser_than, 0, class: 'input-small' %>
-          </div>
-            <hr>
-          <%= submit_tag "Buscar" %>
-          </p>
-        <% end %>
-      </div>
-      <div class="col-md-7 col-md-offset-1">
-        <div class="property_info">
-          <table class="table table-striped">
-            <tr>
-              <td class="prop_header"># Seq.</td>
-              <td class="prop_header">Dirección</td>
-              <td class="prop_header">Mapa</td>
-            </tr>
-            <% @properties.each_with_index do |property, index| %>
-              <tr>
-                <td>
-                  <%= index+1 %>
-                </td>
-                <td>
-                  <%= link_to "#{property.address}", property_visit_path(property.id),title: 'Ver Propiedad', 'data-toggle' => 'tooltip', 'data-placement' => 'right' %>
-                </td>
-                <% unless property.latitude.nil? && property.longitude.nil? %>
-                  <td><%= image_tag "http://maps.google.com/maps/api/staticmap?size=200x200&sensor=false&zoom=16&markers=#{property.latitude}%2C#{property.longitude}" %>
-                  </td>
-                <%end%>
-              </tr>
-            <% end %>
-          </table>
-        </div>
-        <%= will_paginate @properties %>
-      </div>
+      <div class="menubar"><%= render_navigation( expand_all: true) %></div>
     </div>
-    </br>
+    <section>
+      <div class="row">
+        <h1>Propiedades Disponibles</h1>
+        </br>
+        <div class="row">
+          <div class="col-md-3">
+            <%= form_tag properties_show_all_path, method: 'get', class: 'well form-search' do %>
+              <p>
+              <div id="filter_options" class="prop_filter_by_map_button">
+                <h4> Activar Mapa </h4>
+              </div>
+              <p>
+              <div id="filter_options" class="prop_filter_button">
+                <h4> Activar Formulario </h4>
+              </div>
+              <p>
+              <div id="prop_filter_by_map" class="hidden">
+                <h4>Click sobre el mapa y seleccione un punto en el mapa donde desea buscar.</h4>
+                <%= render_gmap_coordinate_picker %>
+              </div>
+              <hr>
+              <div id="prop_filter" class="hidden">
+                <h4>Defina los criterios de Búsqueda</h4>
+                <%= label_tag :for_rental, "Arriendo:", required: true %>
+                <%= radio_button_tag :for_sell, '0' %>
+                <%= label_tag :for_sell, "Venta:" %>
+                <%= radio_button_tag :for_sell, '1', required: true %>
+                <h4>Ubicación</h4>
+                <%= text_field_tag :located_in, nil, class: 'input-small' %>
+                <h4>Area</h4>
+                <%= label_tag :area_from, "desde:" %>
+                <%= number_field_tag :area_greater_than, 0, class: 'input-small' %>
+                <%= label_tag :area_to, "hasta:" %>
+                <%= number_field_tag :area_lesser_than, 0, class: 'input-small' %>
+                <h4>Precio</h4>
+                <%= label_tag :area_from, "desde:" %>
+                <%= number_field_tag :value_greater_than, 0, class: 'input-small' %>
+                <%= label_tag :area_to, "hasta:" %>
+                <%= number_field_tag :value_lesser_than, 0, class: 'input-small' %>
+              </div>
+                <hr>
+              <%= submit_tag "Buscar" %>
+              </p>
+            <% end %>
+          </div>
+          <div class="col-md-7 col-md-offset-1">
+            <div class="property_info">
+              <table class="table table-striped">
+                <tr>
+                  <td class="prop_header"># Seq.</td>
+                  <td class="prop_header">Dirección</td>
+                  <td class="prop_header">Mapa</td>
+                </tr>
+                <% @properties.each_with_index do |property, index| %>
+                  <tr>
+                    <td>
+                      <%= index+1 %>
+                    </td>
+                    <td>
+                      <%= link_to "#{property.address}", property_visit_path(property.id),title: 'Ver Propiedad', 'data-toggle' => 'tooltip', 'data-placement' => 'right' %>
+                    </td>
+                    <% unless property.latitude.nil? && property.longitude.nil? %>
+                      <td><%= image_tag "http://maps.google.com/maps/api/staticmap?size=200x200&sensor=false&zoom=16&markers=#{property.latitude}%2C#{property.longitude}" %>
+                      </td>
+                    <%end%>
+                  </tr>
+                <% end %>
+              </table>
+            </div>
+            <%= will_paginate @properties %>
+          </div>
+        </div>
+        </br>
+      </div>
+    </section>
   </div>
-</section>
+</div>
