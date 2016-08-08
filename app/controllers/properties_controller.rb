@@ -54,7 +54,6 @@ class PropertiesController < ApplicationController
   end
 
   def show_all
-      
     @properties = PropertyPresenter.new(params).filter_properties
     if @properties.empty?
       flash.now[:error] = "No hay propiedades registradas que coincidan con esos criterios de búsqueda."
