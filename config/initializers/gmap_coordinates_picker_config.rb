@@ -7,4 +7,6 @@ GmapCoordinatesPicker.configure do |config|
   config.map_container_class = 'gmap_coordinate_picker_container'
   config.map_width = '225px'
   config.map_height = '220px'
+
+
 end

@@ -10,17 +10,25 @@
     <div class="row">
       <div class="col-md-6 col-md-offset-3">
         <%= form_for @property, url: {action: "create"} do |f| %>
+
+
             <%@countries = CountriesWithCitiesGrouper.new('Americas')%>
             <%= f.label :city, "Ciudad" %>
           <%= f.select :city, @countries.cities_for('Colombia'),
                    { include_blank: true },
                    { class: 'chosen-select' } %>
 
+
           <%= f.label :neighbor, "Barrio:" %>
           <%= f.text_field :neighbor %>
 
           <%= f.label :location, "Dirección:" %>
           <%= f.text_field :location %>
+
+           <div >
+              <h4>Click sobre el mapa y seleccione el punto donde se encuentra la vivienda</h4>
+              <%= f.gmap_coordinate_picker zoom_level: 10 , default_coordinates: [6.2441988,-75.6514248,12], api_key:'AIzaSyDDM3j6SSwFejMHfZt-L3TpT2nKBYuD-jc' %> 
+          </div>
 
           <%= f.label :area, "Área del Inmueble*:" %>
           <%= f.text_field :area %>
@@ -49,5 +57,8 @@
         <% end %>
       </div>
     </div>
+    <div>
+    </div>
   </div>
 </div>
+<div>
