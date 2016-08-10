@@ -54,6 +54,20 @@
               <% end %>
             </table>
           </div>
+          <div id="tabla_visitas">
+            <h3> Visitas: <%= @property.user_visit_alerts.count %></h3>
+            <table class="table table-striped">
+              <tr>
+                <td class="prop_header">ID Visitante:</td>  
+                <td class="prop_header">Fecha-Hora visita:</td> 
+              </tr>
+            <% @property.user_visit_alerts.each do |visit| %>
+              <tr>
+                <td><%= link_to visit.user_id, user_path(id: visit.user_id) %></td>
+                <td><%= visit.created_at %></td>
+              </tr>
+            <% end %>
+            </table>
           </aside>
         <aside class="col-md-4">
           <div id="property_map">
@@ -78,9 +92,6 @@
             <%= link_to user_property_path(current_user.id, @property.id), method: :delete, class: "btn btn-default", data: {confirm: "Desea borrar esta propiedad ?"} do %>
               <i class="glyphicon glyphicon-remove"> Eliminar </i>
             <% end %>
-          </div>
-          <div id="property_visits">
-              <%= link_to @property.user_visit_alerts.count %>
           </div>
           <div id="property_elements_prev">
             <% @elements_presenter = PropertyElementPresenter.new(@property.id) %>

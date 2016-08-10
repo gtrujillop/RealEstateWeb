@@ -7,7 +7,8 @@ class User < ActiveRecord::Base
 
   after_save :set_is_active
   # before_validation :set_date
-
+  
+  has_many :user_visit_alerts
   has_many :user_roles
   has_many :roles, through: :user_roles
 
