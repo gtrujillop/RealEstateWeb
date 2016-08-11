@@ -1,4 +1,33 @@
-<nav id="mainNav" class="navbar navbar-default navbar-fixed-top navbar-custom center">
+<script>
+var pagetop, menu, yPos;
+function yScroll(){
+	pagetop = document.getElementById('pagetop');
+	menu = document.getElementById('menu');
+	yPos = window.pageYOffset;
+	if(yPos > 150){
+		pagetop.style.height = "50px";
+		pagetop.style.paddingTop = "0px";
+		pagetop.style.paddingBottom = "10px";
+		menu.style.height = "10px";
+        menu.style.fontSize  = "0.9em";
+        menul.style.fontSize  = "2.5em";
+        menul.style.backgroundColor = "rgba(0,0,0,0.05)";
+        pagetop.style.backgroundColor = "rgba(255,255,255,0.5)";
+        pagetop.styleborderColor = "black";
+        
+	} else {
+		pagetop.style.height = "140px";
+		pagetop.style.paddingTop = "40px";
+		menu.style.height = "80px";
+        menul.style.fontSize  = "3.5em";
+        menul.style.backgroundColor = "transparent";
+        pagetop.style.backgroundColor = "transparent";
+        pagetop.styleborderColor = "transparent";
+	}
+}
+window.addEventListener("scroll", yScroll);
+</script>
+<nav id="pagetop" class="navbar navbar-default navbar-fixed-top navbar-custom center">
     <div class="container center">
         <!-- Brand and toggle get grouped for better mobile display -->
         <div class="navbar-header page-scroll">
@@ -6,9 +35,7 @@
                 <span class="sr-only">Toggle navigation</span> Menu <i class="fa fa-bars"></i>
             </button>
         </div>
-
-        <!-- Collect the nav links, forms, and other content for toggling -->
-        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1" id="menu" >
             <ul class="nav navbar-nav navbar-right">
                 <li class="hidden">
                 </li>
