@@ -16,6 +16,7 @@ class PropertiesController < ApplicationController
 
   def show
     @property = Property.find(params[:id])
+    @visits = UserVisitAlert.where(property_id: params[:property_id])
   end
 
   def create
@@ -54,7 +55,7 @@ class PropertiesController < ApplicationController
   end
 
   def show_all
-      
+
     @properties = PropertyPresenter.new(params).filter_properties
     if @properties.empty?
       flash.now[:error] = "No hay propiedades registradas que coincidan con esos criterios de búsqueda."
@@ -62,10 +63,9 @@ class PropertiesController < ApplicationController
   end
 
   def visit
-
-    @visits = UserVisitAlert.all
     @property = Property.find(params[:property_id])
-    @user_visit = UserVisitAlert.new(user_id: current_user.id, property_id: @property.lease_holder_id)
+    @visits = UserVisitAlert.where(property_id: params[:property_id])
+    @user_visit = UserVisitAlert.new(user_id: current_user.id, property_id: @property.id)
     if current_user.id != @property.lease_holder_id
       @user_visit.save
     end
