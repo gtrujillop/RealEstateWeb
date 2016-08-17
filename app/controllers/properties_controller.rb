@@ -65,8 +65,8 @@ class PropertiesController < ApplicationController
   def visit
     @property = Property.find(params[:property_id])
     @visits = UserVisitAlert.where(property_id: params[:property_id])
-    @user_visit = UserVisitAlert.new(user_id: current_user.id, property_id: @property.id)
-    if current_user.id != @property.lease_holder_id
+    @user_visit = UserVisitAlert.new(user_id: current_user.id, property_id: @property.id) if current_user
+    if current_user && current_user.id != @property.lease_holder_id
       @user_visit.save
     end
   end
