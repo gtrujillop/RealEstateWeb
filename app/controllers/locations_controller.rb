@@ -8,7 +8,12 @@ class LocationsController < ApplicationController
   end
 
   def new
-    @location = Location.new
+    if @current_user.is_admin?
+      @location = Location.new
+    else
+      flash[:error] = "Acceso denegado."
+      redirect_to user_path(@current_user.id)
+    end
   end
 
   def import

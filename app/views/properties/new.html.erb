@@ -18,7 +18,7 @@
 
           <%= f.label :location, "Dirección:" %>
           <%= f.text_field :location %>
-				
+
           <%= f.label :neighbor, "Barrio:" %>
           <%= f.text_field :neighbor %>
 
@@ -92,10 +92,8 @@
             zoom: 4,
             disableDoubleClickZoom:true
         };
-				
+
         map = new google.maps.Map(document.getElementById('map'),{center: {lat: 6.24905, lng: -75.5994845}, zoom: 12});
-        return map; 
+        return map;
 	}
-	
-		
 </script>
