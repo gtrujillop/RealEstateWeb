@@ -1,17 +1,35 @@
-<% provide(:title, @user.username) %>
-<section>
-  <div class="row">
-		<div class="menubar"><%= render_navigation( expand_all: true) %></div>
-		<div class="user_info pull-right">
-  		<h1>
-    		<%= @user.username %>
-    		<%= gravatar_for @user %>
-  		</h1>
-		</div>
+<div class="container">
+  <div class="jumbotron jumbotron-b">
+    <div class="row">
+      <div class="menubar"><%= render_navigation( expand_all: true) %></div>
+    </div>
+    <h1><% provide(:title, @user.username) %></h1>
+    <section>
+      <div class="row">
+            <div class="user_info">
+                <%= gravatar_for @user %>
+                <div class="table-responsive">
+                    <table class="table table-striped">
+                            <tr>
+                              <th>First name: </th>
+                              <td><%= @user.first_name %></td>
+                            </tr>
+                            <tr>
+                              <th>Last name: </th>
+                              <td><%= @user.last_name %></td>
+                            </tr>
+                            <tr>
+                              <th>Email: </th>
+                              <td><%= @user.email %></td>
+                            </tr>
+                            <tr>
+                              <th>Account created at: </th>
+                              <td><%= @user.created_at %></td>
+                            </tr>
+                    </table>
+                </div>
+            </div>
+      </div>
+    </section>
   </div>
-  <div class="row">
-	  <aside class="col-md-4">
-	     <h1> BLAHH </h1>
-	  </aside>
-  </div>
-</section>
+</div>

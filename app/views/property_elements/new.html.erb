@@ -1,31 +1,38 @@
-<% provide(:title, 'Propiedades::Registrar') %>
-<% Cities.data_path = Rails.root.join('config', 'extras', 'cities') %>
-<h1>Registrar Elemento</h1>
-<% @presenter = PropertyElementPresenter.new(params[:property_id]) %>
-<h3>Propiedad: </h3> <h2><%= @presenter.property_address %></h2>
+<div class="container">
+  <div class="jumbotron jumbotron-b">
+    <div class="row">
+      <div class="menubar"><%= render_navigation( expand_all: true) %></div>
+    </div>
+    <% provide(:title, 'Propiedades::Registrar') %>
+    <% Cities.data_path = Rails.root.join('config', 'extras', 'cities') %>
+    <h1>Registrar Elemento</h1>
+    <% @presenter = PropertyElementPresenter.new(params[:property_id]) %>
+    <h3>Propiedad: </h3> <h2><%= @presenter.property_address %></h2>
 
-<div class="row">
-  <div class="col-md-6 col-md-offset-3">
-   	<%= form_for @property_element, url: {action: "create"} do |f| %>
+    <div class="row">
+      <div class="col-md-6 col-md-offset-3">
+        <%= form_for @property_element, url: {action: "create"} do |f| %>
 
-      <%= f.label :type, "Tipo" %>
-      <%= f.select :element_type_id,  @presenter.types_id_by_name %>
+          <%= f.label :type, "Tipo" %>
+          <%= f.select :element_type_id,  @presenter.types_id_by_name %>
 
-      <%= f.label :name, "Nombre" %>
-      <%= f.text_field :name, required: true %>
+          <%= f.label :name, "Nombre" %>
+          <%= f.text_field :name, required: true %>
 
-			<%= f.label :description, "Detalles:" %>
-      <%= f.text_area :description, required: true %>
+                <%= f.label :description, "Detalles:" %>
+          <%= f.text_area :description, required: true %>
 
-			<%= f.label :image, "Cargar Imagen:" %>
-      <%= f.file_field :image, accept: 'image/png,image/gif,image/jpeg, image/jpg', required: true %>
+                <%= f.label :image, "Cargar Imagen:" %>
+          <%= f.file_field :image, accept: 'image/png,image/gif,image/jpeg, image/jpg', required: true %>
 
-      <%= f.hidden_field :property_id, value: @presenter.property_id %>
+          <%= f.hidden_field :property_id, value: @presenter.property_id %>
 
-      <%= f.submit "Registrar", class: "btn btn-primary" %>
-    <% end %>
-    </br>
-    <%= button_to "Cancelar", user_property_path(current_user.id, @presenter.property_id), method: :get, class: "btn btn-danger"%>
-    </br>
+          <%= f.submit "Registrar", class: "btn btn-primary" %>
+        <% end %>
+        </br>
+        <%= button_to "Cancelar", user_property_path(current_user.id, @presenter.property_id), method: :get, class: "btn btn-danger"%>
+        </br>
+      </div>
+    </div>
   </div>
 </div>

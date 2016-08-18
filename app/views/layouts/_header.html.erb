@@ -1,23 +1,49 @@
-<header class="navbar navbar-top navbar-inverse" role="navigation">
-  <div class="container">
-     <div class="navbar-header">
-         <button type="button" class="navbar-toggle btn btn-default navbar-btn" data-toggle="collapse" data-target=".navbar-main-collapse">
-            Menu
-         </button>
-         <a class="navbar-brand page-scroll" href="#page-top">
-    <%= link_to "Real Estate Web", '#', id: "logo" %>
-         </a>
-     </div>
-    <nav>
-        <div class="collapse navbar-collapse navbar-right navbar-main-collapse">
-            <ul class="nav navbar-nav">
+<script>
+var pagetop, menu, yPos;
+function yScroll(){
+	pagetop = document.getElementById('pagetop');
+	menu = document.getElementById('menu');
+	yPos = window.pageYOffset;
+	if(yPos > 150){
+		pagetop.style.height = "50px";
+		pagetop.style.paddingTop = "0px";
+		pagetop.style.paddingBottom = "10px";
+		menu.style.height = "10px";
+        menu.style.fontSize  = "0.9em";
+        menul.style.fontSize  = "2.5em";
+        menul.style.backgroundColor = "rgba(0,0,0,0.05)";
+        pagetop.style.backgroundColor = "rgba(255,255,255,0.5)";
+        pagetop.styleborderColor = "black";
+        
+	} else {
+		pagetop.style.height = "140px";
+		pagetop.style.paddingTop = "40px";
+		menu.style.height = "80px";
+        menul.style.fontSize  = "3.5em";
+        menul.style.backgroundColor = "transparent";
+        pagetop.style.backgroundColor = "transparent";
+        pagetop.styleborderColor = "transparent";
+	}
+}
+window.addEventListener("scroll", yScroll);
+</script>
+<nav id="pagetop" class="navbar navbar-default navbar-fixed-top navbar-custom center">
+    <div class="container center">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header page-scroll">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                <span class="sr-only">Toggle navigation</span> Menu <i class="fa fa-bars"></i>
+            </button>
+        </div>
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1" id="menu" >
+            <ul class="nav navbar-nav navbar-right">
                 <li class="hidden">
                 </li>
                 <li>
                     <%= link_to "Home",   root_path %>
                 </li>
                 <li>
-                    <%= link_to "Help",   '#' %>
+                    <%= link_to "Buscar Propiedades",   properties_show_all_path %>
                 </li>
                 <% if current_user %>
                 <li class="logged">
@@ -28,9 +54,15 @@
                 </li>
                 <%else%>
                 <li>
+                    <%= link_to "Regístrarse",   new_user_path %>
+                </li>
+                <li>
                     <%= link_to "iniciar sesión", :login %>
                 </li>
                 <%end%>
+                <li>
+                    <%= link_to "Help",   '#' %>
+                </li>
                 <% if current_user %>
                 <li>
                     <%= link_to "salir", :logout, method: :post %>
@@ -38,6 +70,5 @@
                 <%end%>
             </ul>
         </div>
-    </nav>
-  </div>
-</header>
+    </div>
+</nav>

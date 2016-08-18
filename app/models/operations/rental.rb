@@ -1,2 +1,2 @@
-class Sale < Operation
+class Rental < Operation
 end

@@ -1,87 +1,107 @@
-<% provide(:title, "Mi Propiedad") %>
-<section>
-  <div class="row">
-		<div class="menubar"><%= render_navigation( expand_all: true) %></div>
-		<div class="user_info pull-right">
-  		<h1>
-        Detalles de la Propiedad
-  		</h1>
-		</div>
-  </div>
-  <div class="row">
-	  <aside class="col-md-4">
-      <div id="property_address">
-        <h3> Dirección: </h3>
-        <%= @property.address %>
+<div class="container">
+  <div class="jumbotron jumbotron-b">
+    <div class="row">
+      <div class="menubar"><%= render_navigation( expand_all: true) %></div>
+    </div>
+    <% provide(:title, "Mi Propiedad") %>
+    <section>
+      <div class="row">
+            <div class="user_info pull-right">
+            <h1>
+            Detalles de la Propiedad
+            </h1>
+            </div>
       </div>
-      <div id="property_floor">
-        <h3> Piso: </h3>
-        <%= @property.floor %>
-      </div>
-      <div id="property_value">
-        <h3> Valor: </h3>
-        <%= @property.value %>
-      </div>
-      <div id="property_area">
-        <h3> Area: </h3>
-        <%= @property.area %> m2
-      </div>
-      <% if @property.building_name.present? %>
-        <div id="property_building_name">
-          <h3> Edificio: </h3>
-          <%= @property.building_name %>
-        </div>
-      <% end %>
-      <div id="property_nearby_loc">
-        <h3> Lugares Cercanos: </h3>
-        <% @locations = Location.near([@property.latitude, @property.longitude], 2, units: :km) %>
-        <table class="table table-striped">
-          <tr>
-            <td class="prop_header">Dirección</td>
-            <td class="prop_header">Descripción</td>
-            <td class="prop_header">Distancia</td>
-          </tr>
-          <% @locations.each do |location|%>
-            <tr>
-              <td><%= location.address %></td>
-              <td><%= location.description %></td>
-              <td><%= location.distance.round(2) %> Km</td>
-            </tr>
+      <div class="row">
+          <aside class="col-md-4">
+          <div id="property_address">
+            <h3> Dirección: </h3>
+            <%= @property.address %>
+          </div>
+          <div id="property_floor">
+            <h3> Piso: </h3>
+            <%= @property.floor %>
+          </div>
+          <div id="property_value">
+            <h3> Valor: </h3>
+            <%= @property.value %>
+          </div>
+          <div id="property_area">
+            <h3> Area: </h3>
+            <%= @property.area %> m2
+          </div>
+          <% if @property.building_name.present? %>
+            <div id="property_building_name">
+              <h3> Edificio: </h3>
+              <%= @property.building_name %>
+            </div>
           <% end %>
-        </table>
+          <div id="property_nearby_loc">
+            <h3> Lugares Cercanos: </h3>
+            <% @locations = Location.near([@property.latitude, @property.longitude], 2, units: :km) %>
+            <table class="table table-striped">
+              <tr>
+                <td class="prop_header">Dirección</td>
+                <td class="prop_header">Descripción</td>
+                <td class="prop_header">Distancia</td>
+              </tr>
+              <% @locations.each do |location|%>
+                <tr>
+                  <td><%= location.address %></td>
+                  <td><%= location.description %></td>
+                  <td><%= location.distance.round(2) %> Km</td>
+                </tr>
+              <% end %>
+            </table>
+          </div>
+          <div id="tabla_visitas">
+            <h3> Visitas: <%= @property.user_visit_alerts.count %></h3>
+            <table class="table table-striped">
+              <tr>
+                <td class="prop_header">ID Visitante:</td>  
+                <td class="prop_header">Fecha-Hora visita:</td> 
+              </tr>
+            <% @property.user_visit_alerts.each do |visit| %>
+              <tr>
+                <td><%= link_to visit.user_id, user_path(id: visit.user_id) %></td>
+                <td><%= visit.created_at %></td>
+              </tr>
+            <% end %>
+            </table>
+          </aside>
+        <aside class="col-md-4">
+          <div id="property_map">
+            <h3> Mapa: </h3>
+            <%= image_tag "http://maps.google.com/maps/api/staticmap?size=300x200&sensor=true&zoom=16&markers=#{@property.latitude}%2C#{@property.longitude}" %>
+          </div>
+        </aside>
+        <aside class="col-md-3">
+          <div id="config_property_elements">
+            <%= link_to user_property_property_elements_path(current_user.id, @property.id), class: "btn btn-default" do %>
+              <i class="glyphicon glyphicon-wrench"> Configuración </i>
+            <% end %>
+          </div>
+          <br/>
+          <div id="property_opts_edit">
+            <%= link_to edit_user_property_path(current_user, @property), class: "btn btn-default" do %>
+              <i class="glyphicon glyphicon-edit"> Editar</i>
+            <% end %>
+          </div>
+          <br/>
+          <div id="property_opts_drop">
+            <%= link_to user_property_path(current_user.id, @property.id), method: :delete, class: "btn btn-default", data: {confirm: "Desea borrar esta propiedad ?"} do %>
+              <i class="glyphicon glyphicon-remove"> Eliminar </i>
+            <% end %>
+          </div>
+          <div id="property_elements_prev">
+            <% @elements_presenter = PropertyElementPresenter.new(@property.id) %>
+            <% ElementType.all.each do |type| %>
+              </br>
+              <span class="<%= @elements_presenter.glyphicon_for_type(type.name) %>" ></span> <%= type.name %>: <%= @elements_presenter.types_for_property[type.name] %>
+            <% end %>
+          </div>
+        </aside>
       </div>
-	  </aside>
-    <aside class="col-md-4">
-      <div id="property_map">
-        <h3> Mapa: </h3>
-        <%= image_tag "http://maps.google.com/maps/api/staticmap?size=300x200&sensor=true&zoom=16&markers=#{@property.latitude}%2C#{@property.longitude}" %>
-      </div>
-    </aside>
-    <aside class="col-md-3">
-      <div id="config_property_elements">
-        <%= link_to user_property_property_elements_path(current_user.id, @property.id), class: "btn btn-default" do %>
-          <i class="glyphicon glyphicon-wrench"> Configuración </i>
-        <% end %>
-      </div>
-      <br/>
-      <div id="property_opts_edit">
-        <%= link_to edit_user_property_path(current_user, @property), class: "btn btn-default" do %>
-          <i class="glyphicon glyphicon-edit"> Editar</i>
-        <% end %>
-      </div>
-      <br/>
-      <div id="property_opts_drop">
-        <%= link_to user_property_path(current_user.id, @property.id), method: :delete, class: "btn btn-default", data: {confirm: "Desea borrar esta propiedad ?"} do %>
-          <i class="glyphicon glyphicon-remove"> Eliminar </i>
-        <% end %>
-      </div>
-      <div id="property_elements_prev">
-        <% @elements_presenter = PropertyElementPresenter.new(@property.id) %>
-        <% ElementType.all.each do |type| %>
-          </br>
-          <span class="<%= @elements_presenter.glyphicon_for_type(type.name) %>" ></span> <%= type.name %>: <%= @elements_presenter.types_for_property[type.name] %>
-        <% end %>
-      </div>
-    </aside>
+    </section>
   </div>
-</section>
+</div>
